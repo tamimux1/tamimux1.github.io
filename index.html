@@ -3,63 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="theme-color" content="#0E0D0B" />
-<title>Tamim Tanvir — Senior Product Designer | SaaS, Mobile & Web Design</title>
-<meta name="description" content="Tamim Tanvir is a senior product designer with 7+ years of experience designing SaaS platforms, mobile apps, and web products that solve real problems and drive measurable outcomes. Based in Dhaka, shipping 40+ products globally." />
-<meta name="keywords" content="product designer, UX UI designer, SaaS design, mobile app design, web design, design systems, interaction design, user experience, Dhaka, Bangladesh" />
-<meta name="author" content="Tamim Tanvir" />
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-<link rel="canonical" href="https://tamimtanvir.com/" />
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://tamimtanvir.com/" />
-<meta property="og:title" content="Tamim Tanvir — Senior Product Designer" />
-<meta property="og:description" content="Crafting SaaS, mobile, and web experiences that solve real problems. 7+ years, 40+ products shipped globally." />
-<meta property="og:image" content="https://tamimtanvir.com/images/hero-portrait.png" />
-<meta property="og:site_name" content="Tamim Tanvir Portfolio" />
-<meta property="og:locale" content="en_US" />
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://tamimtanvir.com/" />
-<meta property="twitter:title" content="Tamim Tanvir — Senior Product Designer" />
-<meta property="twitter:description" content="Crafting SaaS, mobile, and web experiences that solve real problems." />
-<meta property="twitter:image" content="https://tamimtanvir.com/images/hero-portrait.png" />
-<meta property="twitter:creator" content="@tanvir2402" />
-
-<!-- Additional SEO -->
-<meta name="language" content="English" />
-<meta name="revisit-after" content="7 days" />
+<title>Tamim Tanvir — Product Designer crafting digital experiences</title>
+<meta name="description" content="Tamim Tanvir is a senior product designer with 7+ years of experience designing SaaS, mobile, and web products that drive measurable outcomes." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
-<!-- Schema Markup -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Tamim Tanvir",
-  "jobTitle": "Senior Product Designer",
-  "image": "https://tamimtanvir.com/images/hero-portrait.png",
-  "url": "https://tamimtanvir.com",
-  "sameAs": [
-    "https://www.linkedin.com/in/tamimtanvir/",
-    "https://www.behance.net/creaveer",
-    "https://www.instagram.com/tamim.designsoul/",
-    "http://dribbble.com/creaveer",
-    "http://twitter.com/tanvir2402"
-  ],
-  "worksFor": {
-    "@type": "Organization",
-    "name": "iHealthScreen",
-    "location": "New York, USA"
-  },
-  "knowsAbout": ["Product Design", "UX Research", "SaaS Design", "Mobile App Design", "Web Design", "Design Systems", "Interaction Design"],
-  "description": "Senior product designer with 7+ years crafting SaaS, mobile, and web products that solve real problems"
-}
-</script>
 
 <style>
   :root{
@@ -76,11 +24,19 @@
     --serif: "Fraunces", Georgia, serif;
     --sans: "Inter Tight", -apple-system, BlinkMacSystemFont, sans-serif;
     --mono: "JetBrains Mono", ui-monospace, monospace;
+    /* grid-mask origin — updated by JS on mousemove; off-screen default hides reflect layer */
+    --mouse-x: -999px;
+    --mouse-y: -999px;
   }
   *{ box-sizing:border-box; margin:0; padding:0; }
   html{ scroll-behavior:smooth; }
   body{
-    background:var(--bg);
+    /* base grid baked into background — always visible, no extra DOM node */
+    background:
+      linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.055) 1px, transparent 1px),
+      var(--bg);
+    background-size: 70px 70px, 70px 70px, auto;
     color:var(--ink);
     font-family:var(--sans);
     font-weight:400;
@@ -88,28 +44,6 @@
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
     cursor: default;
-    position: relative;
-  }
-
-  /* Animated Grid Background */
-  body::after{
-    content:"";
-    position:fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    background-image: 
-      linear-gradient(rgba(232,255,92,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(232,255,92,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    background-position: 0 0, 0 0;
-    animation: grid-shift 20s linear infinite;
-    pointer-events:none;
-    z-index:0;
-  }
-
-  @keyframes grid-shift {
-    0% { background-position: 0 0, 0 0; }
-    100% { background-position: 40px 40px, 40px 40px; }
   }
   img{ max-width:100%; display:block; }
   a{ color:inherit; text-decoration:none; }
@@ -130,8 +64,6 @@
     max-width:1440px;
     margin:0 auto;
     padding:0 40px;
-    position:relative;
-    z-index:1;
   }
   @media (max-width:768px){ .container{ padding:0 20px; } }
 
@@ -237,11 +169,69 @@
     display:flex;
     align-items:center;
     justify-content:center;
+    position:relative;   /* stacking context for the glow */
   }
+
+  /* ambient glow behind the portrait */
+  .hero-portrait::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: radial-gradient(ellipse 65% 55% at 50% 65%,
+      rgba(232,255,92,0.17) 0%,
+      transparent 70%
+    );
+    filter: blur(90px);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  /* entrance wrapper — owns opacity + scale-in */
+  .portrait-scene{
+    position:relative;
+    z-index:1;
+    width:100%;
+    opacity:0;
+    will-change:transform, opacity;
+    animation: portrait-enter 1.2s cubic-bezier(0.22,1,0.36,1) 0.2s forwards;
+  }
+
+  /* breathing wrapper — tiny infinite pulse, starts after entrance */
+  .portrait-breathe{
+    will-change:transform;
+    animation: portrait-breathe 7s 1.4s ease-in-out infinite;
+  }
+
+  /* image — tilt target for JS; mask fades bottom into background */
   .hero-portrait img{
     width:100%;
     height:auto;
     display:block;
+    will-change:transform;
+    -webkit-mask-image: linear-gradient(to bottom, black 68%, transparent 100%);
+    mask-image:         linear-gradient(to bottom, black 68%, transparent 100%);
+  }
+
+  @keyframes portrait-enter{
+    from{ opacity:0; transform:scale(1.05); }
+    to{   opacity:1; transform:scale(1);    }
+  }
+  @keyframes portrait-breathe{
+    0%,100%{ transform:scale(1);     }
+    50%    { transform:scale(1.015); }
+  }
+
+  /* ---- reduced-motion: keep mask+glow, kill all animation ---- */
+  @media (prefers-reduced-motion: reduce){
+    .portrait-scene{
+      opacity:1;
+      animation:none;
+    }
+    .portrait-breathe{ animation:none; }
+  }
+  /* ---- touch / no-hover devices: no breathing ---- */
+  @media (hover:none),(pointer:coarse){
+    .portrait-breathe{ animation:none; }
   }
 
   .hero-meta{
@@ -273,15 +263,7 @@
   h1.hero-title em{
     font-style:italic;
     font-weight:300;
-    background: linear-gradient(135deg, var(--accent), #FF6B3D);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradient-animate 4s ease-in-out infinite;
-  }
-  @keyframes gradient-animate {
-    0%, 100% { filter: hue-rotate(0deg) saturate(100%); }
-    50% { filter: hue-rotate(10deg) saturate(120%); }
+    color:var(--accent);
   }
   h1.hero-title .outline{
     -webkit-text-stroke: 1px var(--ink);
@@ -312,22 +294,11 @@
     display:inline-flex; align-items:center; gap:10px;
     transition:all .4s cubic-bezier(.2,.8,.2,1);
     border:none; cursor:pointer;
-    position:relative;
-    overflow:hidden;
-  }
-  .btn-primary::before{
-    content:"";
-    position:absolute;
-    top:0; left:-100%;
-    width:100%; height:100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    transition: left .6s ease;
   }
   .btn-primary:hover{
-    transform: translateY(-3px);
-    box-shadow: 0 20px 40px -10px var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px -20px var(--accent);
   }
-  .btn-primary:hover::before{ left:100%; }
   .btn-primary .arrow{
     transition: transform .4s ease;
     display:inline-block;
@@ -386,8 +357,7 @@
   }
 
   /* ======================= SECTIONS BASE ======================= */
-  section{ position:relative; z-index:1; }
-  header{ position:relative; z-index:1; }
+  section{ position:relative; }
   .section-label{
     font-family:var(--mono);
     font-size:12px;
@@ -414,15 +384,7 @@
   h2.section-title em{
     font-style:italic;
     font-weight:300;
-    background: linear-gradient(135deg, var(--accent), #FF6B3D);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradient-flow 5s ease-in-out infinite;
-  }
-  @keyframes gradient-flow {
-    0%, 100% { filter: saturate(100%); }
-    50% { filter: saturate(120%); }
+    color:var(--accent);
   }
 
   /* ======================= ABOUT ======================= */
@@ -490,15 +452,7 @@
     font-weight:300;
     letter-spacing:-0.02em;
     line-height:1;
-    background: linear-gradient(135deg, var(--accent), #FF6B3D);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradient-pulse 4s ease-in-out infinite;
-  }
-  @keyframes gradient-pulse {
-    0%, 100% { filter: saturate(100%); }
-    50% { filter: saturate(130%); }
+    color:var(--accent);
   }
   .stat-num .plus{ color:var(--ink); font-size:.6em; }
   .stat-label{
@@ -554,14 +508,9 @@
     overflow:hidden;
     position:relative;
     border:1px solid var(--line);
-    transition: all .6s cubic-bezier(.2,.8,.2,1);
-    background: linear-gradient(135deg, var(--bg-card), rgba(232,255,92,0.03));
+    transition: transform .6s cubic-bezier(.2,.8,.2,1);
   }
-  .project:hover .project-visual{
-    transform: translateY(-12px);
-    border-color: rgba(232,255,92,0.4);
-    box-shadow: 0 30px 60px -20px rgba(232,255,92,0.15);
-  }
+  .project:hover .project-visual{ transform: translateY(-8px); }
   .project-visual::before{
     content:"";
     position:absolute; inset:0;
@@ -706,23 +655,15 @@
     padding:32px 0;
     border-top:1px solid var(--line);
     position:relative;
-    transition: all .5s cubic-bezier(.2,.8,.2,1);
-    border-left:3px solid transparent;
-    padding-left:20px;
+    transition: all .4s cubic-bezier(.2,.8,.2,1);
   }
   .process-card:hover{
     padding-top:48px;
-    transform: translateY(-6px);
-    border-left-color: var(--accent);
+    transform: translateY(-4px);
   }
   .process-card:hover .process-num{
-    transform: scale(1.15);
+    transform: scale(1.1);
     animation: bounce-in .5s cubic-bezier(.2,.8,.2,1);
-    background: linear-gradient(135deg, var(--accent), #FF6B3D);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
   }
   .process-num{
     font-family:var(--mono);
@@ -771,22 +712,27 @@
   .exp-list{
     display:flex;
     flex-direction:column;
+    gap:12px;
   }
   .exp-item{
-    padding:32px 0;
-    border-top:1px solid var(--line);
+    padding:32px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--bg-card);
     display:grid;
     grid-template-columns: 120px 1fr;
     gap:32px;
     align-items:start;
-    transition: all .4s cubic-bezier(.2,.8,.2,1);
-    border-left:3px solid transparent;
-    padding-left:20px;
+    position:sticky;
+    transition: box-shadow .4s ease;
   }
-  .exp-item:last-child{ border-bottom:1px solid var(--line); }
+  .exp-item:nth-child(1){ top:100px; }
+  .exp-item:nth-child(2){ top:116px; }
+  .exp-item:nth-child(3){ top:132px; }
+  .exp-item:nth-child(4){ top:148px; }
   .exp-item:hover{
-    padding-left:24px;
-    border-left-color: var(--accent);
+    box-shadow: 0 8px 32px -8px rgba(0,0,0,0.5);
+    border-color: rgba(232,255,92,0.15);
   }
   .exp-year{
     font-family:var(--mono);
@@ -833,21 +779,11 @@
   .service-card{
     background:var(--bg);
     padding:48px 36px;
-    transition: all .4s cubic-bezier(.2,.8,.2,1);
+    transition: background .4s ease;
     position:relative;
     overflow:hidden;
-    background: linear-gradient(135deg, var(--bg), var(--bg-soft));
-    animation: gradient-shift 6s ease-in-out infinite;
   }
-  @keyframes gradient-shift {
-    0%, 100% { background: linear-gradient(135deg, var(--bg), var(--bg-soft)); }
-    50% { background: linear-gradient(135deg, var(--bg-soft), var(--bg)); }
-  }
-  .service-card:hover{
-    background: linear-gradient(135deg, var(--bg-card), var(--bg-soft));
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px -20px var(--accent);
-  }
+  .service-card:hover{ background: var(--bg-card); }
   .service-card::before{
     content:"";
     position:absolute;
@@ -924,8 +860,6 @@
     border-radius:6px;
     position:relative;
     cursor:pointer;
-    transition: all .5s cubic-bezier(.2,.8,.2,1);
-    border:1px solid var(--line);
   }
   .gallery-item img{
     width:100%; height:100%;
@@ -933,11 +867,7 @@
     object-position: top center;
     transition: transform 1s cubic-bezier(.2,.8,.2,1);
   }
-  .gallery-item:hover{
-    border-color: rgba(232,255,92,0.4);
-    box-shadow: 0 20px 40px -20px rgba(232,255,92,0.2);
-  }
-  .gallery-item:hover img{ transform: scale(1.08); }
+  .gallery-item:hover img{ transform: scale(1.06); }
   .gallery-item::after{
     content:"";
     position:absolute; inset:0;
@@ -1027,25 +957,12 @@
     flex-direction:column;
     justify-content:space-between;
     gap:24px;
-    transition: all .5s cubic-bezier(.2,.8,.2,1);
-    background: linear-gradient(135deg, var(--bg-card), rgba(232,255,92,0.02));
-    position:relative;
-    overflow:hidden;
-  }
-  .t-card::before{
-    content:"";
-    position:absolute;
-    top:0; left:-100%;
-    width:100%; height:100%;
-    background: linear-gradient(90deg, transparent, rgba(232,255,92,0.1), transparent);
-    transition: left .6s ease;
+    transition: border-color .3s ease, transform .4s cubic-bezier(.2,.8,.2,1);
   }
   .t-card:hover{
-    border-color:rgba(232,255,92,0.5);
-    transform:translateY(-6px);
-    box-shadow: 0 20px 40px -20px rgba(232,255,92,0.2);
+    border-color:rgba(232,255,92,0.3);
+    transform:translateY(-4px);
   }
-  .t-card:hover::before{ left:100%; }
   .t-quote{
     font-family:var(--serif);
     font-size:16px;
@@ -1107,7 +1024,7 @@
   .contact{
     padding:180px 0 100px;
     border-top:1px solid var(--line);
-    background: linear-gradient(180deg, var(--bg-soft), var(--bg));
+    background: var(--bg-soft);
     position:relative;
     overflow:hidden;
   }
@@ -1116,14 +1033,9 @@
     position:absolute;
     top:50%; left:50%;
     width:800px; height:800px;
-    background: radial-gradient(circle, rgba(232,255,92,0.1), transparent 60%);
+    background: radial-gradient(circle, rgba(232,255,92,0.06), transparent 60%);
     transform: translate(-50%, -50%);
     pointer-events:none;
-    animation: pulse-glow 6s ease-in-out infinite;
-  }
-  @keyframes pulse-glow {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity:0.8; }
-    50% { transform: translate(-50%, -50%) scale(1.1); opacity:1.2; }
   }
   .contact-inner{
     text-align:center;
@@ -1190,9 +1102,6 @@
     justify-content:space-between;
     flex-wrap:wrap;
     gap:16px;
-    position:relative;
-    z-index:1;
-    background:var(--bg);
   }
 
   /* ======================= ANIMATIONS ======================= */
@@ -1224,9 +1133,112 @@
     50%{ transform: scale(1.15); }
     100%{ transform: scale(1.1); }
   }
+
+  /* ======================= BACKGROUND SYSTEM ======================= */
+
+  /*
+   * Layer order (bottom → top):
+   *   body background-image   — base grid (always on, no DOM node)
+   *   .bg-grid-reflect  z:2   — brighter grid, masked to cursor radius via radial-gradient mask
+   *   .glow-ambient     z:3   — 700px orb, blur 100px, slow lerp (0.08)
+   *   .glow-core        z:4   — 200px orb, blur  50px, fast lerp (0.15)
+   *   all page content         — sits above via mix-blend-mode compositing
+   *   nav               z:100
+   *   noise overlay     z:1000
+   */
+
+  /* ── metallic grid reflection layer ────────────────────────────────── */
+  .bg-grid-reflect{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:2;
+    /* same 70px grid as body but 5× brighter — only visible where mask allows */
+    background:
+      linear-gradient(rgba(255,255,255,0.30) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.30) 1px, transparent 1px);
+    background-size: 70px 70px;
+    /* radial mask centred on cursor — reveals the bright grid in a ~450px circle */
+    -webkit-mask-image: radial-gradient(
+      450px circle at var(--mouse-x) var(--mouse-y),
+      black 0%, transparent 100%
+    );
+    mask-image: radial-gradient(
+      450px circle at var(--mouse-x) var(--mouse-y),
+      black 0%, transparent 100%
+    );
+    mix-blend-mode: screen;
+    opacity:0;
+    transition: opacity 0.5s ease;
+  }
+  .bg-grid-reflect.visible{ opacity:1; }
+
+  /* ── ambient orb — large, slow, very soft ───────────────────────────── */
+  .glow-ambient{
+    position:fixed;
+    width:700px; height:700px;
+    top:0; left:0;
+    border-radius:50%;
+    background: radial-gradient(
+      circle,
+      rgba(212,255,77,0.12)  0%,
+      rgba(212,255,77,0.05) 42%,
+      transparent 70%
+    );
+    filter: blur(100px);
+    mix-blend-mode: screen;
+    pointer-events:none;
+    z-index:3;
+    will-change:transform;
+    opacity:0;
+    transition: opacity 0.9s ease;
+  }
+
+  /* ── core orb — small, sharper, faster ──────────────────────────────── */
+  .glow-core{
+    position:fixed;
+    width:200px; height:200px;
+    top:0; left:0;
+    border-radius:50%;
+    background: radial-gradient(
+      circle,
+      rgba(245,255,130,0.22)  0%,
+      rgba(212,255,77,0.07)  55%,
+      transparent 70%
+    );
+    filter: blur(50px);
+    mix-blend-mode: screen;
+    pointer-events:none;
+    z-index:4;
+    will-change:transform;
+    opacity:0;
+    transition: opacity 0.5s ease;
+  }
+
+  /* ── touch / no-hover: base grid only, all reactive layers off ──────── */
+  @media (hover:none),(pointer:coarse){
+    .bg-grid-reflect,
+    .glow-ambient,
+    .glow-core{ display:none; }
+  }
+
+  /* ── reduced-motion: static ambient glow, no follow ────────────────── */
+  @media (prefers-reduced-motion:reduce){
+    .bg-grid-reflect{ display:none; }
+    .glow-ambient{
+      opacity:0.55 !important;
+      transform:translate3d(-25%,-30%,0) !important;
+    }
+    .glow-core{ display:none; }
+  }
 </style>
 </head>
 <body>
+
+<!-- background system: grid-reflect + two glow orbs (all pointer-events:none) -->
+<div class="bg-grid-reflect" id="bg-grid-reflect" aria-hidden="true"></div>
+<div class="glow-ambient"    id="glow-ambient"    aria-hidden="true"></div>
+<div class="glow-core"       id="glow-core"       aria-hidden="true"></div>
 
 <!-- ============ NAV ============ -->
 <nav>
@@ -1254,7 +1266,6 @@
       <div class="hero-text-col">
         <div class="hero-meta animate">
           <span>Product Designer</span>
-          <span>Dhaka, Bangladesh</span>
           <span>Est. 2016</span>
         </div>
         <h1 class="hero-title animate delay-1">
@@ -1275,8 +1286,12 @@
         </div>
       </div>
 
-      <div class="hero-portrait animate delay-2">
-        <img src="images/hero-portrait.png" alt="Tamim Tanvir — Product Designer" />
+      <div class="hero-portrait">
+        <div class="portrait-scene">
+          <div class="portrait-breathe">
+            <img src="images/hero-portrait.png" id="portrait-img" alt="Tamim Tanvir — Product Designer" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1291,9 +1306,9 @@
       <span>Design Systems</span>
       <span>Interaction Design</span>
       <span>Brand Identity</span>
-      <span>Product Design</span>
-      <span>UX Research</span>
-      <span>SaaS Interfaces</span>
+      <span>Motion Design</span>
+      <span>Landing Page Design</span>
+      <span>Product Management</span>
       <span>Mobile Apps</span>
       <span>Design Systems</span>
       <span>Interaction Design</span>
@@ -1820,6 +1835,110 @@
   }, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // hero portrait tilt — perspective rotateX/Y follows cursor over hero section
+  (function () {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const noHover       = !window.matchMedia('(hover: hover)').matches;
+    if (reducedMotion || noHover) return;
+
+    const hero = document.querySelector('.hero');
+    const img  = document.getElementById('portrait-img');
+    if (!hero || !img) return;
+
+    const MAX  = 3.5;   // max tilt degrees
+    const EASE = 0.08;  // lerp factor — lower = lazier trail
+
+    let tx = 0, ty = 0;   // target rotations
+    let cx = 0, cy = 0;   // current (eased) rotations
+    let active = false;
+
+    hero.addEventListener('mousemove', e => {
+      const r  = hero.getBoundingClientRect();
+      const nx = (e.clientX - r.left)  / r.width  * 2 - 1;  // –1 → +1
+      const ny = (e.clientY - r.top)   / r.height * 2 - 1;
+      tx = -ny * MAX;   // rotateX: tilt toward cursor vertically
+      ty =  nx * MAX;   // rotateY: tilt toward cursor horizontally
+      active = true;
+    }, { passive: true });
+
+    hero.addEventListener('mouseleave', () => {
+      tx = 0; ty = 0;   // ease back to flat
+      active = false;
+    });
+
+    function tick() {
+      cx += (tx - cx) * EASE;
+      cy += (ty - cy) * EASE;
+      // only write to DOM when there's a meaningful delta to avoid unnecessary paint
+      if (Math.abs(tx - cx) > 0.001 || Math.abs(ty - cy) > 0.001 || active) {
+        img.style.transform =
+          `perspective(1000px) rotateX(${cx.toFixed(3)}deg) rotateY(${cy.toFixed(3)}deg)`;
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }());
+
+  // background system — single mousemove listener, one RAF loop for all layers
+  (function () {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const noHover       = !window.matchMedia('(hover: hover)').matches;
+
+    const reflect = document.getElementById('bg-grid-reflect');
+    const ambient = document.getElementById('glow-ambient');
+    const core    = document.getElementById('glow-core');
+    if (!reflect || !ambient || !core) return;
+
+    // reduced-motion: CSS handles static glow via !important; nothing more to do
+    if (reducedMotion || noHover) return;
+
+    const root   = document.documentElement;
+    const H_AMB  = 350;    // half of 700px ambient orb
+    const H_CORE = 100;    // half of 200px core orb
+    const E_AMB  = 0.08;   // lerp — ambient trails lazily
+    const E_CORE = 0.15;   // lerp — core snaps faster
+
+    // seed at viewport centre so no orb flash from 0,0 on first paint
+    let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+    let ax = mx, ay = my;   // ambient eased position
+    let kx = mx, ky = my;   // core eased position
+
+    // raw target updated synchronously from mousemove (passive, no rAF cost)
+    window.addEventListener('mousemove', e => {
+      mx = e.clientX;
+      my = e.clientY;
+    }, { passive: true });
+
+    // fade all reactive layers in on first mouse movement
+    window.addEventListener('mousemove', () => {
+      reflect.classList.add('visible');
+      ambient.style.opacity = '1';
+      core.style.opacity    = '1';
+    }, { once: true });
+
+    function tick() {
+      // lerp ambient (slow, dreamy trail)
+      ax += (mx - ax) * E_AMB;
+      ay += (my - ay) * E_AMB;
+
+      // lerp core (faster, follows more closely)
+      kx += (mx - kx) * E_CORE;
+      ky += (my - ky) * E_CORE;
+
+      // grid mask uses raw cursor — snappy metallic reflection feels intentional
+      root.style.setProperty('--mouse-x', mx + 'px');
+      root.style.setProperty('--mouse-y', my + 'px');
+
+      // GPU-composited transform3d — no layout, no paint
+      ambient.style.transform = `translate3d(${ax - H_AMB}px,${ay - H_AMB}px,0)`;
+      core.style.transform    = `translate3d(${kx - H_CORE}px,${ky - H_CORE}px,0)`;
+
+      requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+  }());
 </script>
 </body>
 </html>
