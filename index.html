@@ -3,11 +3,63 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Tamim Tanvir — Product Designer crafting digital experiences</title>
-<meta name="description" content="Tamim Tanvir is a senior product designer with 7+ years of experience designing SaaS, mobile, and web products that drive measurable outcomes." />
+<meta name="theme-color" content="#0E0D0B" />
+<title>Tamim Tanvir — Senior Product Designer | SaaS, Mobile & Web Design</title>
+<meta name="description" content="Tamim Tanvir is a senior product designer with 7+ years of experience designing SaaS platforms, mobile apps, and web products that solve real problems and drive measurable outcomes. Based in Dhaka, shipping 40+ products globally." />
+<meta name="keywords" content="product designer, UX UI designer, SaaS design, mobile app design, web design, design systems, interaction design, user experience, Dhaka, Bangladesh" />
+<meta name="author" content="Tamim Tanvir" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://tamimtanvir.com/" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://tamimtanvir.com/" />
+<meta property="og:title" content="Tamim Tanvir — Senior Product Designer" />
+<meta property="og:description" content="Crafting SaaS, mobile, and web experiences that solve real problems. 7+ years, 40+ products shipped globally." />
+<meta property="og:image" content="https://tamimtanvir.com/images/hero-portrait.png" />
+<meta property="og:site_name" content="Tamim Tanvir Portfolio" />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://tamimtanvir.com/" />
+<meta property="twitter:title" content="Tamim Tanvir — Senior Product Designer" />
+<meta property="twitter:description" content="Crafting SaaS, mobile, and web experiences that solve real problems." />
+<meta property="twitter:image" content="https://tamimtanvir.com/images/hero-portrait.png" />
+<meta property="twitter:creator" content="@tanvir2402" />
+
+<!-- Additional SEO -->
+<meta name="language" content="English" />
+<meta name="revisit-after" content="7 days" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<!-- Schema Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Tamim Tanvir",
+  "jobTitle": "Senior Product Designer",
+  "image": "https://tamimtanvir.com/images/hero-portrait.png",
+  "url": "https://tamimtanvir.com",
+  "sameAs": [
+    "https://www.linkedin.com/in/tamimtanvir/",
+    "https://www.behance.net/creaveer",
+    "https://www.instagram.com/tamim.designsoul/",
+    "http://dribbble.com/creaveer",
+    "http://twitter.com/tanvir2402"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "iHealthScreen",
+    "location": "New York, USA"
+  },
+  "knowsAbout": ["Product Design", "UX Research", "SaaS Design", "Mobile App Design", "Web Design", "Design Systems", "Interaction Design"],
+  "description": "Senior product designer with 7+ years crafting SaaS, mobile, and web products that solve real problems"
+}
+</script>
 
 <style>
   :root{
@@ -36,6 +88,28 @@
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
     cursor: default;
+    position: relative;
+  }
+
+  /* Animated Grid Background */
+  body::after{
+    content:"";
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background-image: 
+      linear-gradient(rgba(232,255,92,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,255,92,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: 0 0, 0 0;
+    animation: grid-shift 20s linear infinite;
+    pointer-events:none;
+    z-index:0;
+  }
+
+  @keyframes grid-shift {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 40px 40px, 40px 40px; }
   }
   img{ max-width:100%; display:block; }
   a{ color:inherit; text-decoration:none; }
@@ -56,6 +130,8 @@
     max-width:1440px;
     margin:0 auto;
     padding:0 40px;
+    position:relative;
+    z-index:1;
   }
   @media (max-width:768px){ .container{ padding:0 20px; } }
 
@@ -197,7 +273,15 @@
   h1.hero-title em{
     font-style:italic;
     font-weight:300;
-    color:var(--accent);
+    background: linear-gradient(135deg, var(--accent), #FF6B3D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-animate 4s ease-in-out infinite;
+  }
+  @keyframes gradient-animate {
+    0%, 100% { filter: hue-rotate(0deg) saturate(100%); }
+    50% { filter: hue-rotate(10deg) saturate(120%); }
   }
   h1.hero-title .outline{
     -webkit-text-stroke: 1px var(--ink);
@@ -228,11 +312,22 @@
     display:inline-flex; align-items:center; gap:10px;
     transition:all .4s cubic-bezier(.2,.8,.2,1);
     border:none; cursor:pointer;
+    position:relative;
+    overflow:hidden;
+  }
+  .btn-primary::before{
+    content:"";
+    position:absolute;
+    top:0; left:-100%;
+    width:100%; height:100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left .6s ease;
   }
   .btn-primary:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 20px 40px -20px var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px -10px var(--accent);
   }
+  .btn-primary:hover::before{ left:100%; }
   .btn-primary .arrow{
     transition: transform .4s ease;
     display:inline-block;
@@ -291,7 +386,8 @@
   }
 
   /* ======================= SECTIONS BASE ======================= */
-  section{ position:relative; }
+  section{ position:relative; z-index:1; }
+  header{ position:relative; z-index:1; }
   .section-label{
     font-family:var(--mono);
     font-size:12px;
@@ -318,7 +414,15 @@
   h2.section-title em{
     font-style:italic;
     font-weight:300;
-    color:var(--accent);
+    background: linear-gradient(135deg, var(--accent), #FF6B3D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-flow 5s ease-in-out infinite;
+  }
+  @keyframes gradient-flow {
+    0%, 100% { filter: saturate(100%); }
+    50% { filter: saturate(120%); }
   }
 
   /* ======================= ABOUT ======================= */
@@ -386,7 +490,15 @@
     font-weight:300;
     letter-spacing:-0.02em;
     line-height:1;
-    color:var(--accent);
+    background: linear-gradient(135deg, var(--accent), #FF6B3D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-pulse 4s ease-in-out infinite;
+  }
+  @keyframes gradient-pulse {
+    0%, 100% { filter: saturate(100%); }
+    50% { filter: saturate(130%); }
   }
   .stat-num .plus{ color:var(--ink); font-size:.6em; }
   .stat-label{
@@ -442,9 +554,14 @@
     overflow:hidden;
     position:relative;
     border:1px solid var(--line);
-    transition: transform .6s cubic-bezier(.2,.8,.2,1);
+    transition: all .6s cubic-bezier(.2,.8,.2,1);
+    background: linear-gradient(135deg, var(--bg-card), rgba(232,255,92,0.03));
   }
-  .project:hover .project-visual{ transform: translateY(-8px); }
+  .project:hover .project-visual{
+    transform: translateY(-12px);
+    border-color: rgba(232,255,92,0.4);
+    box-shadow: 0 30px 60px -20px rgba(232,255,92,0.15);
+  }
   .project-visual::before{
     content:"";
     position:absolute; inset:0;
@@ -589,15 +706,23 @@
     padding:32px 0;
     border-top:1px solid var(--line);
     position:relative;
-    transition: all .4s cubic-bezier(.2,.8,.2,1);
+    transition: all .5s cubic-bezier(.2,.8,.2,1);
+    border-left:3px solid transparent;
+    padding-left:20px;
   }
   .process-card:hover{
     padding-top:48px;
-    transform: translateY(-4px);
+    transform: translateY(-6px);
+    border-left-color: var(--accent);
   }
   .process-card:hover .process-num{
-    transform: scale(1.1);
+    transform: scale(1.15);
     animation: bounce-in .5s cubic-bezier(.2,.8,.2,1);
+    background: linear-gradient(135deg, var(--accent), #FF6B3D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
   }
   .process-num{
     font-family:var(--mono);
@@ -654,10 +779,15 @@
     grid-template-columns: 120px 1fr;
     gap:32px;
     align-items:start;
-    transition: padding-left .4s ease;
+    transition: all .4s cubic-bezier(.2,.8,.2,1);
+    border-left:3px solid transparent;
+    padding-left:20px;
   }
   .exp-item:last-child{ border-bottom:1px solid var(--line); }
-  .exp-item:hover{ padding-left:12px; }
+  .exp-item:hover{
+    padding-left:24px;
+    border-left-color: var(--accent);
+  }
   .exp-year{
     font-family:var(--mono);
     font-size:12px;
@@ -703,11 +833,21 @@
   .service-card{
     background:var(--bg);
     padding:48px 36px;
-    transition: background .4s ease;
+    transition: all .4s cubic-bezier(.2,.8,.2,1);
     position:relative;
     overflow:hidden;
+    background: linear-gradient(135deg, var(--bg), var(--bg-soft));
+    animation: gradient-shift 6s ease-in-out infinite;
   }
-  .service-card:hover{ background: var(--bg-card); }
+  @keyframes gradient-shift {
+    0%, 100% { background: linear-gradient(135deg, var(--bg), var(--bg-soft)); }
+    50% { background: linear-gradient(135deg, var(--bg-soft), var(--bg)); }
+  }
+  .service-card:hover{
+    background: linear-gradient(135deg, var(--bg-card), var(--bg-soft));
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -20px var(--accent);
+  }
   .service-card::before{
     content:"";
     position:absolute;
@@ -784,6 +924,8 @@
     border-radius:6px;
     position:relative;
     cursor:pointer;
+    transition: all .5s cubic-bezier(.2,.8,.2,1);
+    border:1px solid var(--line);
   }
   .gallery-item img{
     width:100%; height:100%;
@@ -791,7 +933,11 @@
     object-position: top center;
     transition: transform 1s cubic-bezier(.2,.8,.2,1);
   }
-  .gallery-item:hover img{ transform: scale(1.06); }
+  .gallery-item:hover{
+    border-color: rgba(232,255,92,0.4);
+    box-shadow: 0 20px 40px -20px rgba(232,255,92,0.2);
+  }
+  .gallery-item:hover img{ transform: scale(1.08); }
   .gallery-item::after{
     content:"";
     position:absolute; inset:0;
@@ -881,12 +1027,25 @@
     flex-direction:column;
     justify-content:space-between;
     gap:24px;
-    transition: border-color .3s ease, transform .4s cubic-bezier(.2,.8,.2,1);
+    transition: all .5s cubic-bezier(.2,.8,.2,1);
+    background: linear-gradient(135deg, var(--bg-card), rgba(232,255,92,0.02));
+    position:relative;
+    overflow:hidden;
+  }
+  .t-card::before{
+    content:"";
+    position:absolute;
+    top:0; left:-100%;
+    width:100%; height:100%;
+    background: linear-gradient(90deg, transparent, rgba(232,255,92,0.1), transparent);
+    transition: left .6s ease;
   }
   .t-card:hover{
-    border-color:rgba(232,255,92,0.3);
-    transform:translateY(-4px);
+    border-color:rgba(232,255,92,0.5);
+    transform:translateY(-6px);
+    box-shadow: 0 20px 40px -20px rgba(232,255,92,0.2);
   }
+  .t-card:hover::before{ left:100%; }
   .t-quote{
     font-family:var(--serif);
     font-size:16px;
@@ -948,7 +1107,7 @@
   .contact{
     padding:180px 0 100px;
     border-top:1px solid var(--line);
-    background: var(--bg-soft);
+    background: linear-gradient(180deg, var(--bg-soft), var(--bg));
     position:relative;
     overflow:hidden;
   }
@@ -957,9 +1116,14 @@
     position:absolute;
     top:50%; left:50%;
     width:800px; height:800px;
-    background: radial-gradient(circle, rgba(232,255,92,0.06), transparent 60%);
+    background: radial-gradient(circle, rgba(232,255,92,0.1), transparent 60%);
     transform: translate(-50%, -50%);
     pointer-events:none;
+    animation: pulse-glow 6s ease-in-out infinite;
+  }
+  @keyframes pulse-glow {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity:0.8; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity:1.2; }
   }
   .contact-inner{
     text-align:center;
@@ -1026,6 +1190,9 @@
     justify-content:space-between;
     flex-wrap:wrap;
     gap:16px;
+    position:relative;
+    z-index:1;
+    background:var(--bg);
   }
 
   /* ======================= ANIMATIONS ======================= */
