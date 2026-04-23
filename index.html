@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tamim Tanvir — Product Designer crafting digital experiences</title>
+<meta name="description" content="Tamim Tanvir is a senior product designer with 7+ years of experience designing SaaS, mobile, and web products that drive measurable outcomes." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --bg:        #0E0D0B;
+    --bg-soft:   #151310;
+    --bg-card:   #1B1915;
+    --ink:       #F4F0E8;
+    --ink-soft:  #B8B2A4;
+    --ink-mute:  #7A7468;
+    --line:      #2A2620;
+    --accent:    #E8FF5C;   /* electric citrus */
+    --accent-2:  #FF6B3D;   /* clay */
+    --accent-3:  #D4B896;   /* sand */
+    --serif: "Fraunces", Georgia, serif;
+    --sans: "Inter Tight", -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    cursor: default;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  ::selection{ background:var(--accent); color:#0a0a0a; }
+
+  /* noise texture overlay */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    pointer-events:none;
+    z-index:1000;
+    opacity:.035;
+    mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .container{
+    max-width:1440px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+  @media (max-width:768px){ .container{ padding:0 20px; } }
+
+  /* ======================= NAV ======================= */
+  nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    padding:20px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: rgba(14,13,11,0.6);
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+  .logo{
+    font-family:var(--serif);
+    font-size:22px;
+    font-weight:500;
+    font-style:italic;
+    letter-spacing:-0.01em;
+    display:flex; align-items:center; gap:10px;
+  }
+  .logo-dot{
+    width:8px; height:8px; border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 12px var(--accent);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{ 50%{ opacity:.4; transform:scale(.85);} }
+
+  .nav-links{
+    display:flex; gap:36px;
+    font-size:14px;
+    font-weight:400;
+  }
+  .nav-links a{
+    position:relative;
+    color:var(--ink-soft);
+    transition:color .3s ease;
+  }
+  .nav-links a::after{
+    content:"";
+    position:absolute;
+    bottom:-4px; left:0;
+    width:0; height:1px;
+    background:var(--accent);
+    transition: width .4s cubic-bezier(.2,.8,.2,1);
+  }
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a:hover::after{ width:100%; }
+
+  .nav-cta{
+    padding:10px 20px;
+    border:1px solid var(--line);
+    border-radius:40px;
+    font-size:13px;
+    font-weight:500;
+    display:inline-flex; align-items:center; gap:8px;
+    transition:all .3s ease;
+  }
+  .nav-cta:hover{
+    background:var(--accent);
+    color:#0a0a0a;
+    border-color:var(--accent);
+  }
+  .nav-cta .status{
+    width:6px; height:6px;
+    border-radius:50%;
+    background:#4ADE80;
+    box-shadow:0 0 8px #4ADE80;
+  }
+  @media (max-width:768px){
+    nav{ padding:16px 20px; }
+    .nav-links{ display:none; }
+  }
+
+  /* ======================= HERO ======================= */
+  .hero{
+    padding:0;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 44% 56%;
+    gap:0;
+    align-items:center;
+  }
+  @media (max-width:1024px){
+    .hero-grid{ grid-template-columns: 1fr; min-height:auto; }
+  }
+  .hero-text-col{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding: 120px 60px 80px 40px;
+  }
+  @media (max-width:768px){ .hero-text-col{ padding: 120px 20px 60px; } }
+  .hero-portrait{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .hero-portrait img{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+
+  .hero-meta{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-mute);
+    margin-bottom:32px;
+    display:flex;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .hero-meta span::before{
+    content:"◆";
+    margin-right:8px;
+    color:var(--accent);
+    font-size:10px;
+  }
+
+  h1.hero-title{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size: clamp(36px, 4.6vw, 80px);
+    line-height:0.92;
+    letter-spacing:-0.03em;
+    margin-bottom:40px;
+  }
+  h1.hero-title em{
+    font-style:italic;
+    font-weight:300;
+    color:var(--accent);
+  }
+  h1.hero-title .outline{
+    -webkit-text-stroke: 1px var(--ink);
+    color:transparent;
+    font-weight:300;
+  }
+
+  .hero-sub{
+    font-size:16px;
+    line-height:1.65;
+    color:var(--ink-soft);
+    max-width:460px;
+    margin-bottom:40px;
+    font-weight:300;
+  }
+
+  .hero-actions{
+    display:flex; gap:16px; flex-wrap:wrap;
+    align-items:center;
+  }
+  .btn-primary{
+    background:var(--accent);
+    color:#0a0a0a;
+    padding:18px 32px;
+    border-radius:80px;
+    font-size:15px;
+    font-weight:500;
+    display:inline-flex; align-items:center; gap:10px;
+    transition:all .4s cubic-bezier(.2,.8,.2,1);
+    border:none; cursor:pointer;
+  }
+  .btn-primary:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px -20px var(--accent);
+  }
+  .btn-primary .arrow{
+    transition: transform .4s ease;
+    display:inline-block;
+  }
+  .btn-primary:hover .arrow{ transform: translateX(4px) rotate(-45deg); }
+  .btn-ghost{
+    padding:18px 28px;
+    border:1px solid var(--line);
+    border-radius:80px;
+    font-size:15px;
+    color:var(--ink-soft);
+    transition: all .3s ease;
+  }
+  .btn-ghost:hover{
+    border-color:var(--ink);
+    color:var(--ink);
+  }
+
+
+  /* marquee  */
+  .marquee-wrap{
+    margin-top:60px;
+    padding: 30px 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+    white-space:nowrap;
+    position:relative;
+  }
+  .marquee-wrap::before, .marquee-wrap::after{
+    content:""; position:absolute; top:0; bottom:0;
+    width:120px; z-index:2; pointer-events:none;
+  }
+  .marquee-wrap::before{ left:0; background:linear-gradient(90deg, var(--bg), transparent); }
+  .marquee-wrap::after{ right:0; background:linear-gradient(-90deg, var(--bg), transparent); }
+  .marquee{
+    display:inline-flex;
+    gap:60px;
+    animation: scroll 40s linear infinite;
+    font-family:var(--serif);
+    font-size:28px;
+    font-style:italic;
+    font-weight:300;
+    color:var(--ink-soft);
+  }
+  .marquee span{ display:inline-flex; align-items:center; gap:60px; }
+  .marquee span::after{
+    content:"✦";
+    color:var(--accent);
+    font-style:normal;
+    font-size:18px;
+  }
+  @keyframes scroll{
+    from{ transform:translateX(0); }
+    to{ transform: translateX(-50%); }
+  }
+
+  /* ======================= SECTIONS BASE ======================= */
+  section{ position:relative; }
+  .section-label{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--ink-mute);
+    display:flex; align-items:center; gap:12px;
+    margin-bottom:32px;
+  }
+  .section-label::before{
+    content:"";
+    width:32px; height:1px;
+    background:var(--accent);
+  }
+
+  h2.section-title{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size: clamp(40px, 6vw, 88px);
+    line-height:1;
+    letter-spacing:-0.02em;
+    margin-bottom:24px;
+  }
+  h2.section-title em{
+    font-style:italic;
+    font-weight:300;
+    color:var(--accent);
+  }
+
+  /* ======================= ABOUT ======================= */
+  .about{
+    padding:140px 0;
+    position:relative;
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns: 420px 1fr;
+    gap:80px;
+    align-items:start;
+  }
+  @media (max-width: 1024px){
+    .about-grid{ grid-template-columns: 1fr; gap:48px; }
+  }
+  .about-image-stack{
+    position:relative;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:12px;
+  }
+  .about-image-stack .big{
+    grid-column: span 2;
+    aspect-ratio: 4/3;
+    overflow:hidden;
+    border-radius:4px;
+  }
+  .about-image-stack .small{
+    aspect-ratio: 3/4;
+    overflow:hidden;
+    border-radius:4px;
+  }
+  .about-image-stack img{
+    width:100%; height:100%;
+    object-fit:cover;
+    transition: transform .8s cubic-bezier(.2,.8,.2,1);
+  }
+  .about-image-stack > div:hover img{ transform: scale(1.05); }
+
+  .about-body p{
+    font-size:22px;
+    line-height:1.5;
+    color:var(--ink);
+    font-weight:300;
+    margin-bottom:24px;
+    font-family:var(--serif);
+  }
+  .about-body p em{
+    font-style:italic;
+    color:var(--accent);
+  }
+  .about-stats{
+    margin-top:48px;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:24px;
+    padding-top:40px;
+    border-top:1px solid var(--line);
+  }
+  @media (max-width:640px){ .about-stats{ grid-template-columns: 1fr 1fr; } }
+  .stat-num{
+    font-family:var(--serif);
+    font-size:52px;
+    font-weight:300;
+    letter-spacing:-0.02em;
+    line-height:1;
+    color:var(--accent);
+  }
+  .stat-num .plus{ color:var(--ink); font-size:.6em; }
+  .stat-label{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-mute);
+    margin-top:12px;
+  }
+
+  /* ======================= WORK / PROJECTS ======================= */
+  .work{
+    padding:140px 0;
+    border-top:1px solid var(--line);
+  }
+  .work-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin-bottom:80px;
+    flex-wrap:wrap;
+    gap:24px;
+  }
+  .work-header p{
+    max-width:420px;
+    font-size:16px;
+    color:var(--ink-soft);
+  }
+  .project-list{
+    display:flex;
+    flex-direction:column;
+    gap:120px;
+  }
+  .project{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  .project:nth-child(even){
+    direction: rtl;
+  }
+  .project:nth-child(even) > *{ direction: ltr; }
+  @media (max-width: 1024px){
+    .project{ grid-template-columns: 1fr; gap:32px; }
+    .project:nth-child(even){ direction:ltr; }
+  }
+  .project-visual{
+    aspect-ratio: 4/3;
+    background: var(--bg-card);
+    border-radius:6px;
+    overflow:hidden;
+    position:relative;
+    border:1px solid var(--line);
+    transition: transform .6s cubic-bezier(.2,.8,.2,1);
+  }
+  .project:hover .project-visual{ transform: translateY(-8px); }
+  .project-visual::before{
+    content:"";
+    position:absolute; inset:0;
+    background: var(--pv-bg);
+    opacity:0.9;
+  }
+  .project-visual-inner{
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    padding:40px;
+    z-index:2;
+  }
+
+  .project-meta{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--ink-mute);
+    margin-bottom:20px;
+    display:flex; gap:16px; flex-wrap:wrap;
+  }
+  .project-meta span.tag{
+    color:var(--accent);
+  }
+  .project h3{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size: clamp(34px, 4vw, 56px);
+    line-height:1.05;
+    letter-spacing:-0.02em;
+    margin-bottom:20px;
+  }
+  .project p{
+    color:var(--ink-soft);
+    font-size:17px;
+    line-height:1.6;
+    margin-bottom:32px;
+    max-width:460px;
+  }
+  .project-outcomes{
+    display:flex; gap:40px;
+    padding:24px 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    margin-bottom:32px;
+  }
+  .outcome strong{
+    display:block;
+    font-family:var(--serif);
+    font-size:36px;
+    font-weight:400;
+    color:var(--ink);
+    line-height:1;
+  }
+  .outcome span{
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-mute);
+    margin-top:8px;
+    display:block;
+  }
+  .project-link{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    font-size:15px;
+    color:var(--ink);
+    border-bottom:1px solid var(--line);
+    padding-bottom:8px;
+    transition: all .3s ease;
+  }
+  .project-link:hover{
+    border-color:var(--accent);
+    color:var(--accent);
+    gap:18px;
+  }
+
+  /* Project mockup styles */
+  .mockup-phone{
+    width:200px; height:380px;
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+    border-radius:32px;
+    padding:14px;
+    box-shadow: 0 40px 80px -20px rgba(0,0,0,0.6);
+    transform: perspective(1000px) rotateY(-12deg) rotateX(4deg);
+  }
+  .mockup-phone-screen{
+    width:100%; height:100%;
+    border-radius:22px;
+    overflow:hidden;
+    background: var(--screen-bg, #fff);
+    position:relative;
+    display:flex; flex-direction:column;
+  }
+
+  .mockup-browser{
+    width:100%;
+    aspect-ratio:16/10;
+    background:#fff;
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow: 0 40px 80px -20px rgba(0,0,0,0.5);
+    transform: perspective(1000px) rotateX(6deg);
+  }
+  .mockup-browser-bar{
+    height:28px;
+    background:#f0f0f0;
+    display:flex;
+    align-items:center;
+    padding:0 12px;
+    gap:6px;
+  }
+  .mockup-browser-bar i{
+    width:10px; height:10px;
+    border-radius:50%;
+    background:#ccc;
+    font-style:normal;
+  }
+  .mockup-browser-bar i:first-child{ background:#ff5f57; }
+  .mockup-browser-bar i:nth-child(2){ background:#ffbd2e; }
+  .mockup-browser-bar i:nth-child(3){ background:#28c840; }
+
+  /* ======================= PROCESS ======================= */
+  .process{
+    padding:140px 0;
+    border-top:1px solid var(--line);
+    background: var(--bg-soft);
+  }
+  .process-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:32px;
+    margin-top:80px;
+  }
+  @media (max-width: 1024px){ .process-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width: 640px){ .process-grid{ grid-template-columns:1fr; } }
+
+  .process-card{
+    padding:32px 0;
+    border-top:1px solid var(--line);
+    position:relative;
+  }
+  .process-num{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--accent);
+    margin-bottom:80px;
+    letter-spacing:0.1em;
+  }
+  .process-card h4{
+    font-family:var(--serif);
+    font-size:28px;
+    font-weight:400;
+    line-height:1.1;
+    margin-bottom:16px;
+  }
+  .process-card p{
+    color:var(--ink-soft);
+    font-size:14px;
+    line-height:1.6;
+  }
+
+  /* ======================= EXPERIENCE TIMELINE ======================= */
+  .experience{
+    padding:140px 0;
+    border-top:1px solid var(--line);
+  }
+  .exp-grid{
+    display:grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap:80px;
+    align-items:start;
+  }
+  @media (max-width: 1024px){ .exp-grid{ grid-template-columns:1fr; } }
+
+  .exp-image{
+    aspect-ratio: 3/4;
+    overflow:hidden;
+    border-radius:4px;
+    position:sticky;
+    top:100px;
+  }
+  .exp-image img{ width:100%; height:100%; object-fit:cover; }
+
+  .exp-list{
+    display:flex;
+    flex-direction:column;
+  }
+  .exp-item{
+    padding:32px 0;
+    border-top:1px solid var(--line);
+    display:grid;
+    grid-template-columns: 120px 1fr;
+    gap:32px;
+    align-items:start;
+    transition: padding-left .4s ease;
+  }
+  .exp-item:last-child{ border-bottom:1px solid var(--line); }
+  .exp-item:hover{ padding-left:12px; }
+  .exp-year{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--ink-mute);
+    padding-top:6px;
+    letter-spacing:0.08em;
+  }
+  .exp-role{
+    font-family:var(--serif);
+    font-size:24px;
+    font-weight:400;
+    line-height:1.2;
+    margin-bottom:6px;
+  }
+  .exp-company{
+    font-size:14px;
+    color:var(--ink-soft);
+    margin-bottom:12px;
+  }
+  .exp-company span{ color:var(--accent); }
+  .exp-desc{
+    font-size:14px;
+    color:var(--ink-mute);
+    line-height:1.6;
+  }
+
+  /* ======================= SERVICES ======================= */
+  .services{
+    padding:140px 0;
+    border-top:1px solid var(--line);
+  }
+  .services-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    margin-top:60px;
+    border:1px solid var(--line);
+  }
+  @media (max-width: 1024px){ .services-grid{ grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 640px){ .services-grid{ grid-template-columns: 1fr; } }
+
+  .service-card{
+    background:var(--bg);
+    padding:48px 36px;
+    transition: background .4s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .service-card:hover{ background: var(--bg-card); }
+  .service-card::before{
+    content:"";
+    position:absolute;
+    top:0; left:0;
+    width:0; height:2px;
+    background:var(--accent);
+    transition: width .5s cubic-bezier(.2,.8,.2,1);
+  }
+  .service-card:hover::before{ width:100%; }
+  .service-icon{
+    width:48px; height:48px;
+    margin-bottom:32px;
+    color:var(--accent);
+  }
+  .service-card h4{
+    font-family:var(--serif);
+    font-size:26px;
+    font-weight:400;
+    line-height:1.15;
+    margin-bottom:16px;
+  }
+  .service-card p{
+    color:var(--ink-soft);
+    font-size:14px;
+    line-height:1.6;
+    margin-bottom:24px;
+  }
+  .service-tags{
+    display:flex; flex-wrap:wrap; gap:8px;
+  }
+  .service-tags span{
+    font-family:var(--mono);
+    font-size:11px;
+    padding:4px 10px;
+    border:1px solid var(--line);
+    border-radius:40px;
+    color:var(--ink-mute);
+    letter-spacing:0.04em;
+  }
+
+  /* ======================= GALLERY ======================= */
+  .gallery{
+    padding: 140px 0;
+    border-top:1px solid var(--line);
+    background: var(--bg-soft);
+    overflow:hidden;
+  }
+  .gallery-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin-bottom:60px;
+    flex-wrap:wrap; gap:20px;
+  }
+  .gallery-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 280px 280px;
+    gap:12px;
+  }
+  @media (max-width: 1024px){
+    .gallery-grid{ grid-template-columns: repeat(2,1fr); grid-template-rows: none; grid-auto-rows:220px; }
+    .g-bl,.g-br,.g-wc{ grid-column:auto; grid-row:auto; }
+  }
+  @media (max-width: 640px){ .gallery-grid{ grid-template-columns: 1fr; } }
+
+  /* bento placements */
+  .g-bl{ grid-column:1; grid-row:1 / span 2; }   /* left tall */
+  .g-br{ grid-column:4; grid-row:1 / span 2; }   /* right tall */
+  .g-wc{ grid-column:2 / span 2; grid-row:2; }   /* centre wide */
+
+  .gallery-item{
+    overflow:hidden;
+    border-radius:6px;
+    position:relative;
+    cursor:pointer;
+  }
+  .gallery-item img{
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position: top center;
+    transition: transform 1s cubic-bezier(.2,.8,.2,1);
+  }
+  .gallery-item:hover img{ transform: scale(1.06); }
+  .gallery-item::after{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, transparent 40%, rgba(14,13,11,0.75));
+    opacity:0;
+    transition: opacity .4s ease;
+  }
+  .gallery-item:hover::after{ opacity:1; }
+  .gallery-item .caption{
+    position:absolute;
+    bottom:14px; left:18px; right:18px;
+    z-index:2;
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--ink);
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    opacity:0;
+    transform: translateY(8px);
+    transition: all .4s ease;
+  }
+  .gallery-item:hover .caption{ opacity:1; transform: translateY(0); }
+
+  /* ======================= TESTIMONIAL ======================= */
+  .testimonial{
+    padding:140px 0;
+    border-top:1px solid var(--line);
+  }
+  .quote-big{
+    font-family:var(--serif);
+    font-size: clamp(32px, 4.5vw, 64px);
+    line-height:1.15;
+    letter-spacing:-0.02em;
+    font-weight:300;
+    max-width:1100px;
+    margin-bottom:48px;
+  }
+  .quote-big em{ color:var(--accent); font-style:italic; }
+  .quote-mark{
+    font-family:var(--serif);
+    font-size:120px;
+    line-height:1;
+    color:var(--accent);
+    margin-bottom:-32px;
+    display:block;
+  }
+  .quote-author{
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+  .quote-avatar{
+    width:56px; height:56px;
+    border-radius:50%;
+    overflow:hidden;
+  }
+  .quote-avatar img{ width:100%; height:100%; object-fit:cover; }
+  .quote-author strong{
+    display:block;
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:18px;
+  }
+  .quote-author span{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--ink-mute);
+    letter-spacing:0.05em;
+  }
+
+  /* ======================= TESTIMONIAL GRID ======================= */
+  .testimonial-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:24px;
+    margin-top:80px;
+  }
+  @media (max-width:1024px){ .testimonial-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:640px){ .testimonial-grid{ grid-template-columns:1fr; } }
+
+  .t-card{
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:32px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    gap:24px;
+    transition: border-color .3s ease, transform .4s cubic-bezier(.2,.8,.2,1);
+  }
+  .t-card:hover{
+    border-color:rgba(232,255,92,0.3);
+    transform:translateY(-4px);
+  }
+  .t-quote{
+    font-family:var(--serif);
+    font-size:16px;
+    line-height:1.65;
+    font-weight:300;
+    color:var(--ink);
+    font-style:italic;
+    flex:1;
+  }
+  .t-author{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+  }
+  .t-avatar{
+    width:44px; height:44px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--serif);
+    font-size:18px;
+    font-weight:500;
+    flex-shrink:0;
+  }
+  .t-author strong{
+    display:block;
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:15px;
+    margin-bottom:2px;
+  }
+  .t-author span{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--ink-mute);
+    letter-spacing:0.05em;
+  }
+  .testimonial-footer{
+    margin-top:48px;
+    text-align:center;
+  }
+  .testimonial-footer a{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--ink-mute);
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    border-bottom:1px solid var(--line);
+    padding-bottom:4px;
+    transition: color .3s ease, border-color .3s ease;
+  }
+  .testimonial-footer a:hover{
+    color:var(--accent);
+    border-color:var(--accent);
+  }
+
+  /* ======================= CONTACT / CTA ======================= */
+  .contact{
+    padding:180px 0 100px;
+    border-top:1px solid var(--line);
+    background: var(--bg-soft);
+    position:relative;
+    overflow:hidden;
+  }
+  .contact::before{
+    content:"";
+    position:absolute;
+    top:50%; left:50%;
+    width:800px; height:800px;
+    background: radial-gradient(circle, rgba(232,255,92,0.06), transparent 60%);
+    transform: translate(-50%, -50%);
+    pointer-events:none;
+  }
+  .contact-inner{
+    text-align:center;
+    position:relative;
+    z-index:2;
+  }
+  .contact h2{
+    font-family:var(--serif);
+    font-weight:300;
+    font-size: clamp(48px, 8vw, 130px);
+    line-height:0.95;
+    letter-spacing:-0.03em;
+    margin-bottom:40px;
+  }
+  .contact h2 em{ font-style:italic; color:var(--accent); }
+  .contact p{
+    font-size:19px;
+    color:var(--ink-soft);
+    max-width:600px;
+    margin:0 auto 48px;
+    font-weight:300;
+  }
+  .contact-email{
+    display:inline-block;
+    font-family:var(--serif);
+    font-size: clamp(24px, 3vw, 44px);
+    font-style:italic;
+    color:var(--ink);
+    border-bottom:1px solid var(--line);
+    padding-bottom:12px;
+    transition: all .4s ease;
+    margin-bottom:60px;
+  }
+  .contact-email:hover{
+    color:var(--accent);
+    border-color:var(--accent);
+  }
+  .contact-socials{
+    display:flex;
+    gap:32px;
+    justify-content:center;
+    flex-wrap:wrap;
+    font-size:14px;
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+  }
+  .contact-socials a{
+    color:var(--ink-mute);
+    transition: color .3s ease;
+  }
+  .contact-socials a:hover{ color:var(--accent); }
+
+  /* ======================= FOOTER ======================= */
+  footer{
+    padding:40px 0;
+    border-top:1px solid var(--line);
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--ink-mute);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+
+  /* ======================= ANIMATIONS ======================= */
+  @keyframes rise{
+    from{ opacity:0; transform: translateY(30px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+  .animate{
+    opacity:0;
+    animation: rise 1s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+  .delay-1{ animation-delay: .1s; }
+  .delay-2{ animation-delay: .25s; }
+  .delay-3{ animation-delay: .4s; }
+  .delay-4{ animation-delay: .55s; }
+
+  .reveal{
+    opacity:0;
+    transform: translateY(40px);
+    transition: opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);
+  }
+  .reveal.in{
+    opacity:1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <a href="#" class="logo">
+    <span class="logo-dot"></span>
+    Tamim Tanvir
+  </a>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">
+    <span class="status"></span>
+    Available for work
+  </a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text-col">
+        <div class="hero-meta animate">
+          <span>Product Designer</span>
+          <span>Dhaka, Bangladesh</span>
+          <span>Est. 2016</span>
+        </div>
+        <h1 class="hero-title animate delay-1">
+          Designing <em>digital</em><br>
+          products <span class="outline">that</span><br>
+          people actually<br>
+          love to use.
+        </h1>
+        <p class="hero-sub animate delay-2">
+          I'm Tamim — a senior product designer with 7+ years crafting SaaS platforms, mobile apps and digital experiences that solve real problems and drive measurable outcomes.
+        </p>
+        <div class="hero-actions animate delay-3">
+          <a href="#work" class="btn-primary">
+            Explore selected work
+            <span class="arrow">→</span>
+          </a>
+          <a href="#contact" class="btn-ghost">Let's talk</a>
+        </div>
+      </div>
+
+      <div class="hero-portrait animate delay-2">
+        <img src="images/hero-portrait.png" alt="Tamim Tanvir — Product Designer" />
+      </div>
+    </div>
+  </div>
+
+  <!-- marquee -->
+  <div class="marquee-wrap">
+    <div class="marquee">
+      <span>Product Design</span>
+      <span>UX Research</span>
+      <span>SaaS Interfaces</span>
+      <span>Mobile Apps</span>
+      <span>Design Systems</span>
+      <span>Interaction Design</span>
+      <span>Brand Identity</span>
+      <span>Product Design</span>
+      <span>UX Research</span>
+      <span>SaaS Interfaces</span>
+      <span>Mobile Apps</span>
+      <span>Design Systems</span>
+      <span>Interaction Design</span>
+      <span>Brand Identity</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-stack reveal">
+        <div class="big"><img src="images/workspace.jpg" alt="Tamim at workspace"></div>
+        <div class="small"><img src="images/cafe-coffee.jpg" alt="Tamim thinking"></div>
+        <div class="small"><img src="images/studio-casual-stool.jpg" alt="Tamim portrait"></div>
+      </div>
+
+      <div class="reveal">
+        <div class="section-label">About · 01</div>
+        <h2 class="section-title">I'm not here to<br>make things <em>pretty.</em><br>I make them <em>work.</em></h2>
+
+        <div class="about-body" style="margin-top:40px;">
+          <p>
+            Every product I touch starts with one question: <em>what problem are we actually solving?</em> From there, I dig into user research, map out the ideation, and test until the thing feels obvious — like it couldn't have been any other way.
+          </p>
+          <p style="font-size:18px; color:var(--ink-soft); font-family:var(--sans);">
+            I've worked across healthcare, fintech, travel, e-commerce and SaaS — partnering with founders, startups and enterprise teams to ship products that drive real numbers. Currently leading design for iHealthScreen out of NY, building tools that help doctors work smarter.
+          </p>
+        </div>
+
+        <div class="about-stats">
+          <div>
+            <div class="stat-num">7<span class="plus">+</span></div>
+            <div class="stat-label">Years designing</div>
+          </div>
+          <div>
+            <div class="stat-num">40<span class="plus">+</span></div>
+            <div class="stat-label">Products shipped</div>
+          </div>
+          <div>
+            <div class="stat-num">24k<span class="plus">+</span></div>
+            <div class="stat-label">Behance views</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORK ============ -->
+<section id="work" class="work">
+  <div class="container">
+    <div class="work-header reveal">
+      <div>
+        <div class="section-label">Selected work · 02</div>
+        <h2 class="section-title">Case studies, <em>not</em> decorations.</h2>
+      </div>
+      <p>Each project below comes from real problems — real users — and real business goals. Here's a handful I'm proud of.</p>
+    </div>
+
+    <div class="project-list">
+      <!-- Project 1 -->
+      <div class="project reveal">
+        <div class="project-visual" style="--pv-bg:rgba(0,0,0,0); padding:0;">
+          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/8e79bd158190285.638716034b0aa.png" alt="Doctor Appointment & Medicine Reminder App" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;" />
+        </div>
+        <div>
+          <div class="project-meta">
+            <span>2023</span>
+            <span class="tag">Healthcare · Mobile</span>
+            <span>12 weeks</span>
+          </div>
+          <h3>Doctor Appointment &amp;<br>Medicine Reminder App</h3>
+          <p>A mobile experience that simplifies booking, reminders and health tracking for patients managing chronic conditions — with a calm visual system that reduces anxiety at every step.</p>
+          <div class="project-outcomes">
+            <div class="outcome"><strong>126</strong><span>Appreciations</span></div>
+            <div class="outcome"><strong>3.7k</strong><span>Behance views</span></div>
+            <div class="outcome"><strong>+38%</strong><span>Task completion</span></div>
+          </div>
+          <a href="https://www.behance.net/gallery/158190285/Doctor-Appointment-and-Medicine-Reminder-Mobile-App" target="_blank" rel="noopener" class="project-link">View full case study <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project reveal">
+        <div class="project-visual" style="--pv-bg:rgba(0,0,0,0); padding:0;">
+          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/823d93184403843.6551ad586a074.png" alt="Doc Spot Rx — SaaS for Doctors" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;" />
+        </div>
+        <div>
+          <div class="project-meta">
+            <span>2024</span>
+            <span class="tag">SaaS · Healthcare</span>
+            <span>iHealthScreen NY</span>
+          </div>
+          <h3>Doc Spot Rx —<br>Empowering Doctors</h3>
+          <p>A full SaaS platform for physicians to manage patients, appointments and prescriptions. Designed the end-to-end experience, built the component library, and ran usability testing with 12 doctors.</p>
+          <div class="project-outcomes">
+            <div class="outcome"><strong>32</strong><span>Screens shipped</span></div>
+            <div class="outcome"><strong>100%</strong><span>Design system</span></div>
+            <div class="outcome"><strong>NY</strong><span>Deployed</span></div>
+          </div>
+          <a href="https://www.behance.net/gallery/184403843/Doc-Spot-Rx-SaaS-Empowering-Doctors" target="_blank" rel="noopener" class="project-link">View full case study <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project reveal">
+        <div class="project-visual" style="--pv-bg:rgba(0,0,0,0); padding:0;">
+          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/6c3d0d183783599.6545e8e2a2985.jpg" alt="RideWave — Ride Sharing App" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;" />
+        </div>
+        <div>
+          <div class="project-meta">
+            <span>2023</span>
+            <span class="tag">Transport · Mobile</span>
+            <span>Case study</span>
+          </div>
+          <h3>RideWave —<br>where journeys begin</h3>
+          <p>A ride-sharing experience designed from research to handoff. User interviews, journey maps, wireframes, and a bold identity system — crafted so the ride feels as good as the destination.</p>
+          <div class="project-outcomes">
+            <div class="outcome"><strong>23</strong><span>Appreciations</span></div>
+            <div class="outcome"><strong>733</strong><span>Views</span></div>
+            <div class="outcome"><strong>8</strong><span>User interviews</span></div>
+          </div>
+          <a href="https://www.behance.net/gallery/183783599/RideWave-Ride-Sharing-App-UXUI-Design-Case-Study" target="_blank" rel="noopener" class="project-link">View full case study <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project reveal">
+        <div class="project-visual" style="--pv-bg:rgba(0,0,0,0); padding:0;">
+          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/6fd225164551127.63f889b99b1de.png" alt="Fresh Grocery — Website Design" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;" />
+        </div>
+        <div>
+          <div class="project-meta">
+            <span>2022</span>
+            <span class="tag">E-commerce · Web</span>
+            <span>Grocery</span>
+          </div>
+          <h3>Fresh Grocery —<br>effortless shopping</h3>
+          <p>A warm, organic e-commerce experience built for speed and delight. Designed the full browse-to-checkout flow with visual hierarchy optimized for mobile-first shoppers.</p>
+          <div class="project-outcomes">
+            <div class="outcome"><strong>15</strong><span>Appreciations</span></div>
+            <div class="outcome"><strong>351</strong><span>Views</span></div>
+            <div class="outcome"><strong>-42%</strong><span>Checkout friction</span></div>
+          </div>
+          <a href="https://www.behance.net/gallery/164551127/Fresh-Grocery-Website-Design-for-Effortless-Shopping" target="_blank" rel="noopener" class="project-link">View full case study <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="process">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">How I work · 03</div>
+      <h2 class="section-title">A process built on<br>research, <em>not</em> guesswork.</h2>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-card reveal">
+        <div class="process-num">— 01</div>
+        <h4>Discover &amp; research</h4>
+        <p>Deep-dive into users, competitors and business goals. Interviews, surveys, and analytics to understand what matters.</p>
+      </div>
+      <div class="process-card reveal">
+        <div class="process-num">— 02</div>
+        <h4>Define &amp; ideate</h4>
+        <p>Translate insights into user flows, information architecture and opportunity maps. Narrow the fog into a clear brief.</p>
+      </div>
+      <div class="process-card reveal">
+        <div class="process-num">— 03</div>
+        <h4>Design &amp; iterate</h4>
+        <p>Wireframes, hi-fi mockups, design system tokens. Build in public with the team. Iterate against user feedback.</p>
+      </div>
+      <div class="process-card reveal">
+        <div class="process-num">— 04</div>
+        <h4>Ship &amp; measure</h4>
+        <p>Dev handoff with detailed specs. Ship, measure against KPIs, iterate. The work isn't done at launch — it starts there.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services" class="services">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">What I do · 04</div>
+      <h2 class="section-title">Services <em>tailored</em> to<br>where you are.</h2>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <path d="M3 9h18M9 21V9"/>
+        </svg>
+        <h4>SaaS &amp; Web App Design</h4>
+        <p>End-to-end SaaS design — from discovery to handoff. Dashboards, admin panels, and complex product interfaces that scale.</p>
+        <div class="service-tags">
+          <span>UX Research</span>
+          <span>Wireframes</span>
+          <span>Hi-fi Design</span>
+          <span>Design System</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="7" y="2" width="10" height="20" rx="2"/>
+          <line x1="11" y1="18" x2="13" y2="18"/>
+        </svg>
+        <h4>Mobile App Design</h4>
+        <p>iOS and Android apps that feel native, intuitive and delightful. Focused on performance, accessibility and retention.</p>
+        <div class="service-tags">
+          <span>iOS</span>
+          <span>Android</span>
+          <span>Prototyping</span>
+          <span>Motion</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/>
+        </svg>
+        <h4>Website Design</h4>
+        <p>Marketing sites, landing pages, and brand experiences that convert. Crafted with attention to typography, motion and narrative.</p>
+        <div class="service-tags">
+          <span>Landing Pages</span>
+          <span>Framer</span>
+          <span>Webflow</span>
+          <span>Brand Sites</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 6v6l4 2"/>
+        </svg>
+        <h4>UX Research &amp; Strategy</h4>
+        <p>User interviews, usability testing, journey mapping and heuristic audits. Inform decisions with evidence, not opinions.</p>
+        <div class="service-tags">
+          <span>Interviews</span>
+          <span>Usability Tests</span>
+          <span>Journey Maps</span>
+          <span>Audits</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+        <h4>Design Systems</h4>
+        <p>Scalable component libraries built in Figma with developer-ready tokens. So the whole team moves faster, together.</p>
+        <div class="service-tags">
+          <span>Figma</span>
+          <span>Tokens</span>
+          <span>Docs</span>
+          <span>Handoff</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 2l2.4 7.4H22l-6.2 4.6L18.2 22 12 17.3 5.8 22l2.4-8L2 9.4h7.6z"/>
+        </svg>
+        <h4>Brand &amp; Identity</h4>
+        <p>Visual identity systems for digital-first brands. Logo, color, typography, and brand guidelines — set up for longevity.</p>
+        <div class="service-tags">
+          <span>Logo</span>
+          <span>Visual Identity</span>
+          <span>Guidelines</span>
+          <span>Applications</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section id="experience" class="experience">
+  <div class="container">
+    <div class="exp-grid">
+      <div class="exp-image reveal">
+        <img src="images/kurta-standing.jpg" alt="Tamim Tanvir portrait">
+      </div>
+
+      <div class="reveal">
+        <div class="section-label">Experience · 05</div>
+        <h2 class="section-title">The <em>receipts.</em></h2>
+        <p style="color:var(--ink-soft); margin-top:20px; max-width:520px; margin-bottom:48px;">A quick look at the places I've helped build, the teams I've shipped with, and the problems I've solved along the way.</p>
+
+        <div class="exp-list">
+          <div class="exp-item">
+            <div class="exp-year">2023 — Now</div>
+            <div>
+              <div class="exp-role">UX / UI Designer</div>
+              <div class="exp-company">iHealthScreen <span>·</span> New York, USA</div>
+              <div class="exp-desc">Leading design for SaaS healthcare platforms. Building design systems, running research, and shipping features used by doctors daily.</div>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-year">2020 — 2023</div>
+            <div>
+              <div class="exp-role">Brand Specialist, UI/UX &amp; Motion Designer</div>
+              <div class="exp-company">Digicart Solutions <span>·</span> Dhaka, Bangladesh</div>
+              <div class="exp-desc">Designed web and mobile products across e-commerce and fintech. Owned brand systems and motion work for multiple client engagements.</div>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-year">2018 — 2020</div>
+            <div>
+              <div class="exp-role">Visualizer &amp; Motion Designer</div>
+              <div class="exp-company">Banglamark Group <span>·</span> Bangladesh</div>
+              <div class="exp-desc">Built the visual vocabulary — identity systems, motion graphics, and product marketing assets for a portfolio of consumer brands.</div>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-year">2016 — 2018</div>
+            <div>
+              <div class="exp-role">Freelance &amp; Independent Work</div>
+              <div class="exp-company">Creaveer Design <span>·</span> Global clients</div>
+              <div class="exp-desc">Started out taking on SaaS UI, mobile apps, and brand identity projects for founders and startups around the world.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery">
+  <div class="container">
+    <div class="gallery-header reveal">
+      <div>
+        <div class="section-label">Off-screen · 06</div>
+        <h2 class="section-title">Life <em>between</em><br>the pixels.</h2>
+      </div>
+      <p style="color:var(--ink-soft); max-width:360px;">A few glimpses of the person behind the portfolio — because work doesn't happen in a vacuum.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <!-- left tall -->
+      <div class="gallery-item g-bl">
+        <img src="images/studio-suit-chair.jpg" alt="Tamim — studio portrait" style="object-position:top center;">
+        <div class="caption">STUDIO · 2024</div>
+      </div>
+      <!-- top centre-left -->
+      <div class="gallery-item">
+        <img src="images/dark-glasses.jpg" alt="Tamim — dark glasses" style="object-position:top center;">
+        <div class="caption">PORTRAIT · 01</div>
+      </div>
+      <!-- top centre-right -->
+      <div class="gallery-item">
+        <img src="images/studio-closeup.jpg" alt="Tamim — close up" style="object-position:center 15%;">
+        <div class="caption">CLOSE-UP</div>
+      </div>
+      <!-- right tall -->
+      <div class="gallery-item g-br">
+        <img src="images/bw-portrait.jpg" alt="Tamim — monochrome" style="object-position:top center;">
+        <div class="caption">MONOCHROME</div>
+      </div>
+      <!-- bottom centre wide -->
+      <div class="gallery-item g-wc">
+        <img src="images/dark-smile.jpg" alt="Tamim — portrait" style="object-position:top center;">
+        <div class="caption">PORTRAIT · 02</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonial">
+  <div class="container">
+
+    <!-- Section header -->
+    <div class="reveal" style="margin-bottom:80px;">
+      <div class="section-label">Testimonials · 07</div>
+      <h2 class="section-title">Straight from the<br>people I've <em>worked with.</em></h2>
+    </div>
+
+    <!-- Featured quote -->
+    <div class="reveal">
+      <span class="quote-mark">"</span>
+      <p class="quote-big">
+        Tamim is an exceptional <em>UI/UX specialist</em> and art director — a problem solver who never backs down from a challenge, always looking for new and innovative ways to tackle complex projects.
+      </p>
+      <div class="quote-author">
+        <div class="quote-avatar" style="background:#4ADE80; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:22px; color:#0a0a0a; font-weight:500;">A</div>
+        <div>
+          <strong>Atiq Morshed Rabby</strong>
+          <span>UI Designer · CATS EYE · Google Certified UX Designer</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial grid -->
+    <div class="testimonial-grid">
+
+      <div class="t-card reveal">
+        <p class="t-quote">"His designs consistently simplified complex workflows into user-friendly interfaces, demonstrating remarkable attention to detail and a strong product understanding. Tamim is a proactive, collaborative, and highly valuable designer any team would be fortunate to have."</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:#E8FF5C; color:#0a0a0a;">N</div>
+          <div>
+            <strong>Nasif Raihan</strong>
+            <span>Software Engineer (AI) · MyMedicalHUB Ltd.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card reveal">
+        <p class="t-quote">"Tamim has a rare ability to create visually stunning designs while also prioritizing user experience. He consistently delivers high-quality work that is both creative and functional. His passion for design is infectious — I would highly recommend Tamim for any organization."</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:#60A5FA; color:#0a0a0a;">M</div>
+          <div>
+            <strong>Md Minhajul Islam</strong>
+            <span>Senior Software Engineer · React · Node.js</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card reveal">
+        <p class="t-quote">"Tamim consistently delivers high-quality designs that are visually appealing and user-friendly. He is a creative problem-solver and a collaborative team player always looking for ways to improve the user experience. A valuable asset to any organization."</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:#C084FC; color:#0a0a0a;">A</div>
+          <div>
+            <strong>Ariful Hasan Kawshiq</strong>
+            <span>Software QA Engineer · iHealthScreen Inc.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card reveal">
+        <p class="t-quote">"Tamim excels in UX/UI, graphic, and motion interaction design. He balances aesthetics with functionality to create meaningful and impactful designs — a dedicated, hardworking, and passionate designer who delivers high-quality work on time."</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:#FB923C; color:#0a0a0a;">M</div>
+          <div>
+            <strong>Mohammad Saiful Islam Rana</strong>
+            <span>Asst. Manager · Remsoft Solutions Ltd.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card reveal">
+        <p class="t-quote">"Tamim is a talented designer who always delivers clean and user-friendly designs, even when deadlines are tight. We worked together on several AI and SaaS-based applications and I was really impressed with his professionalism."</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:#FF6B3D; color:#0a0a0a;">R</div>
+          <div>
+            <strong>Rana Hamid</strong>
+            <span>Lead .NET Developer · Dynamics 365 Specialist</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card reveal">
+        <p class="t-quote">"His design approach was always user-centered, clear, and well thought out — making the development process much easier. Consistently impressed by how quickly he delivered high-quality designs, even under tight deadlines, while always being open to discussion."</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:#D4B896; color:#0a0a0a;">A</div>
+          <div>
+            <strong>Abdur Rahim Sheikh</strong>
+            <span>Software Developer (ML) · Django Developer</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- LinkedIn link -->
+    <div class="testimonial-footer reveal">
+      <a href="https://www.linkedin.com/in/tamimtanvir/details/recommendations/" target="_blank" rel="noopener">12 recommendations on LinkedIn →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="contact-inner reveal">
+      <div class="section-label" style="justify-content:center;">Let's build · 08</div>
+      <h2>
+        Have an <em>idea?</em><br>
+        Let's make it <em>real.</em>
+      </h2>
+      <p>I'm currently booking new projects for Q2 2026. Whether it's a full product from zero, a redesign, or a design-system overhaul — I'd love to hear about it.</p>
+
+      <a href="mailto:tamim.uiux@gmail.com" class="contact-email">tamim.uiux@gmail.com →</a>
+
+      <div class="contact-socials">
+        <a href="https://www.linkedin.com/in/tamimtanvir/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.behance.net/creaveer" target="_blank" rel="noopener">Behance</a>
+        <a href="https://www.instagram.com/tamim.designsoul/" target="_blank" rel="noopener">Instagram</a>
+        <a href="http://dribbble.com/creaveer" target="_blank" rel="noopener">Dribbble</a>
+        <a href="http://twitter.com/tanvir2402" target="_blank" rel="noopener">X</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:12px;">
+    <div>© 2026 Tamim Tanvir. Crafted in Dhaka.</div>
+    <div>Open for full-time &amp; freelance work</div>
+  </div>
+</footer>
+
+<script>
+  // scroll reveal
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
