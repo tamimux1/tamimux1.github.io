@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
 
 <style>
   :root{
@@ -447,6 +447,18 @@
     border-top:1px solid var(--line);
   }
   @media (max-width:640px){ .about-stats{ grid-template-columns: 1fr 1fr; } }
+  .stat-card{
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:32px;
+    transition: all .4s cubic-bezier(.2,.8,.2,1);
+  }
+  .stat-card:hover{
+    border-color:rgba(232,255,92,0.3);
+    transform:translateY(-4px);
+    box-shadow: 0 8px 24px -8px rgba(232,255,92,0.15);
+  }
   .stat-num{
     font-family:var(--serif);
     font-size:52px;
@@ -1342,15 +1354,15 @@
         </div>
 
         <div class="about-stats">
-          <div>
+          <div class="stat-card">
             <div class="stat-num">7<span class="plus">+</span></div>
             <div class="stat-label">Years designing</div>
           </div>
-          <div>
+          <div class="stat-card">
             <div class="stat-num">40<span class="plus">+</span></div>
             <div class="stat-label">Products shipped</div>
           </div>
-          <div>
+          <div class="stat-card">
             <div class="stat-num">24k<span class="plus">+</span></div>
             <div class="stat-label">Behance views</div>
           </div>
