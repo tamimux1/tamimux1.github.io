@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
 <style>
   :root{
@@ -1152,7 +1153,7 @@
     position:fixed;
     inset:0;
     pointer-events:none;
-    z-index:2;
+    z-index:-1;
     /* same 70px grid as body but 5× brighter — only visible where mask allows */
     background:
       linear-gradient(rgba(255,255,255,0.30) 1px, transparent 1px),
@@ -1188,7 +1189,7 @@
     filter: blur(100px);
     mix-blend-mode: screen;
     pointer-events:none;
-    z-index:3;
+    z-index:-2;
     will-change:transform;
     opacity:0;
     transition: opacity 0.9s ease;
@@ -1209,7 +1210,7 @@
     filter: blur(50px);
     mix-blend-mode: screen;
     pointer-events:none;
-    z-index:4;
+    z-index:-3;
     will-change:transform;
     opacity:0;
     transition: opacity 0.5s ease;
