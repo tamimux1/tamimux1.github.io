@@ -1388,6 +1388,8 @@
     flex-direction:column;
     gap:12px;
   }
+
+  /* featured cards */
   .exp-item{
     padding:32px;
     border:1px solid var(--line);
@@ -1398,30 +1400,97 @@
     gap:32px;
     align-items:start;
     position:sticky;
-    transition: box-shadow .4s ease;
+    overflow:hidden;
+    text-decoration:none;
+    color:inherit;
+    /* scroll-in start state */
+    opacity:0;
+    transform:translateX(40px);
+    transition:
+      transform  .55s cubic-bezier(0.25,1,.5,1),
+      opacity    .55s cubic-bezier(0.25,1,.5,1),
+      box-shadow .4s  cubic-bezier(0.25,1,.5,1),
+      border-color .35s cubic-bezier(0.25,1,.5,1);
+  }
+  .exp-item.in{
+    opacity:1;
+    transform:translateX(0);
   }
   .exp-item:nth-child(1){ top:100px; }
   .exp-item:nth-child(2){ top:116px; }
   .exp-item:nth-child(3){ top:132px; }
   .exp-item:nth-child(4){ top:148px; }
-  .exp-item:hover{
-    box-shadow: 0 8px 32px -8px rgba(0,0,0,0.5);
-    border-color: rgba(232,255,92,0.15);
+
+  /* hover: lift + glow */
+  .exp-item.in:hover{
+    transform:translateY(-6px);
+    border-color:rgba(232,255,92,0.3);
+    box-shadow:0 8px 32px -8px rgba(0,0,0,0.5),
+               0 20px 60px -16px rgba(232,255,92,0.18);
   }
+
+  /* left accent bar */
+  .exp-item::before{
+    content:"";
+    position:absolute;
+    left:0; top:0; bottom:0;
+    width:3px;
+    background:var(--accent);
+    transform:scaleY(0);
+    transform-origin:top;
+    transition:transform .35s cubic-bezier(0.25,1,.5,1);
+    border-radius:3px 0 0 3px;
+  }
+  .exp-item.in:hover::before{ transform:scaleY(1); }
+
+  /* arrow icon — top-right, fades in on hover */
+  .exp-arrow{
+    position:absolute;
+    top:20px; right:20px;
+    font-size:16px;
+    line-height:1;
+    color:var(--accent);
+    opacity:0;
+    transition:opacity .3s cubic-bezier(0.25,1,.5,1);
+    pointer-events:none;
+  }
+  .exp-item.in:hover .exp-arrow{ opacity:1; }
+
+  /* date: shift right + brighten on hover */
   .exp-year{
     font-family:var(--mono);
     font-size:12px;
     color:var(--ink-mute);
     padding-top:6px;
     letter-spacing:0.08em;
+    transition:transform .35s cubic-bezier(0.25,1,.5,1),
+               color .35s cubic-bezier(0.25,1,.5,1);
   }
+  .exp-item.in:hover .exp-year{
+    transform:translateX(8px);
+    color:var(--ink-soft);
+  }
+
+  /* role title + underline that draws left-to-right */
   .exp-role{
     font-family:var(--serif);
     font-size:24px;
     font-weight:400;
     line-height:1.2;
     margin-bottom:6px;
+    position:relative;
+    display:inline-block;
   }
+  .exp-role::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:-2px;
+    width:0; height:1px;
+    background:var(--accent);
+    transition:width .4s cubic-bezier(0.25,1,.5,1);
+  }
+  .exp-item.in:hover .exp-role::after{ width:100%; }
+
   .exp-company{
     font-size:14px;
     color:var(--ink-soft);
@@ -1432,6 +1501,138 @@
     font-size:14px;
     color:var(--ink-mute);
     line-height:1.6;
+  }
+
+  /* show more / less button */
+  .exp-more-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:20px;
+    padding:12px 24px;
+    border:1px solid rgba(232,255,92,0.4);
+    border-radius:6px;
+    background:transparent;
+    color:var(--accent);
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.05em;
+    cursor:pointer;
+    transition:background .3s ease, border-color .3s ease, transform .2s ease;
+  }
+  .exp-more-btn:hover{
+    background:rgba(232,255,92,0.07);
+    border-color:rgba(232,255,92,0.7);
+    transform:translateY(-1px);
+  }
+
+  /* compact list collapsible wrapper */
+  .exp-compact-wrap{
+    overflow:hidden;
+    max-height:0;
+    opacity:0;
+    transition:max-height .55s cubic-bezier(0.25,1,.5,1),
+               opacity .4s cubic-bezier(0.25,1,.5,1);
+  }
+  .exp-compact-wrap.open{
+    max-height:3000px;
+    opacity:1;
+  }
+  .exp-compact-list{
+    margin-top:16px;
+    border-top:1px solid var(--line);
+  }
+  .exp-compact-row{
+    display:grid;
+    grid-template-columns:160px 1fr auto auto;
+    gap:8px 14px;
+    align-items:center;
+    padding:13px 4px 13px 18px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    text-decoration:none;
+    color:inherit;
+    transition:padding-left .25s cubic-bezier(0.25,1,.5,1);
+  }
+  /* lime dot at far left — fades in on hover */
+  .exp-compact-row::before{
+    content:"";
+    position:absolute;
+    left:2px; top:50%;
+    width:6px; height:6px;
+    border-radius:50%;
+    background:var(--accent);
+    transform:translateY(-50%) scale(0);
+    transition:transform .25s cubic-bezier(0.25,1,.5,1);
+  }
+  .exp-compact-row:hover{ padding-left:28px; }
+  .exp-compact-row:hover::before{ transform:translateY(-50%) scale(1); }
+  .exp-compact-date{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--ink-mute);
+    letter-spacing:0.06em;
+    white-space:nowrap;
+    transition:color .25s ease;
+  }
+  .exp-compact-role{
+    font-family:var(--serif);
+    font-size:14px;
+    color:var(--ink);
+    transition:color .25s ease;
+  }
+  .exp-compact-role em{
+    color:var(--ink-soft);
+    font-style:normal;
+    font-family:var(--sans);
+    font-size:13px;
+  }
+  .exp-compact-loc{
+    font-size:12px;
+    color:var(--ink-mute);
+    white-space:nowrap;
+    transition:color .25s ease;
+  }
+  .exp-compact-link{
+    font-size:13px;
+    color:var(--accent);
+    opacity:0.4;
+    transition:opacity .25s ease;
+  }
+  .exp-compact-row:hover .exp-compact-date,
+  .exp-compact-row:hover .exp-compact-role,
+  .exp-compact-row:hover .exp-compact-loc{ color:var(--ink); }
+  .exp-compact-row:hover .exp-compact-link{ opacity:1; }
+
+  /* mobile */
+  @media (max-width:640px){
+    .exp-item{
+      grid-template-columns:1fr;
+      gap:16px;
+    }
+    .exp-compact-row{
+      grid-template-columns:1fr auto;
+      grid-template-rows:auto auto;
+      gap:4px 8px;
+    }
+    .exp-compact-date{ grid-column:1; grid-row:1; }
+    .exp-compact-role{ grid-column:1; grid-row:2; }
+    .exp-compact-loc{ display:none; }
+    .exp-compact-link{ grid-column:2; grid-row:1 / 3; align-self:center; }
+  }
+
+  /* reduced motion: skip all transitions, show cards immediately */
+  @media (prefers-reduced-motion:reduce){
+    .exp-item,
+    .exp-item::before,
+    .exp-arrow,
+    .exp-year,
+    .exp-role::after,
+    .exp-compact-row,
+    .exp-compact-row::before,
+    .exp-compact-wrap,
+    .exp-more-btn{ transition:none; }
+    .exp-item{ opacity:1; transform:none; }
   }
 
   /* ======================= SERVICES ======================= */
@@ -2695,43 +2896,169 @@
         <h2 class="section-title">The <em>receipts.</em></h2>
         <p style="color:var(--ink-soft); margin-top:20px; max-width:520px; margin-bottom:48px;">A quick look at the places I've helped build, the teams I've shipped with, and the problems I've solved along the way.</p>
 
-        <div class="exp-list">
-          <div class="exp-item">
-            <div class="exp-year">2023 — Now</div>
+        <div class="exp-list" id="exp-list">
+
+          <!-- Card 1 -->
+          <a href="https://mymedicalhub.com" target="_blank" rel="noopener noreferrer" class="exp-item">
+            <span class="exp-arrow">↗</span>
+            <div class="exp-year">NOV 2023 — PRESENT</div>
+            <div>
+              <div class="exp-role">Senior UX/UI Designer</div>
+              <div class="exp-company">MyMedicalHub International <span>·</span> Florida, United States</div>
+              <div class="exp-desc">Leading end-to-end product design for healthcare platforms — user research, wireframing, high-fidelity prototypes, and usability testing. Building a cohesive visual system while partnering with PMs and engineers to ship accessible, responsive experiences across web and mobile.</div>
+            </div>
+          </a>
+
+          <!-- Card 2 -->
+          <a href="https://www.royex.net" target="_blank" rel="noopener noreferrer" class="exp-item">
+            <span class="exp-arrow">↗</span>
+            <div class="exp-year">MAR 2023 — NOV 2023</div>
             <div>
               <div class="exp-role">UX / UI Designer</div>
-              <div class="exp-company">iHealthScreen <span>·</span> New York, USA</div>
-              <div class="exp-desc">Leading design for SaaS healthcare platforms. Building design systems, running research, and shipping features used by doctors daily.</div>
+              <div class="exp-company">Royex Technologies <span>·</span> Dubai, UAE (Remote)</div>
+              <div class="exp-desc">Designed SaaS dashboards and mobile apps for clients across the Middle East. Ran remote usability testing, built wireframes, and shipped design specs into an agile dev pipeline via Figma Dev Mode.</div>
             </div>
-          </div>
-          <div class="exp-item">
-            <div class="exp-year">2020 — 2023</div>
+          </a>
+
+          <!-- Card 3 -->
+          <a href="https://www.ihealthscreen.org/" target="_blank" rel="noopener noreferrer" class="exp-item">
+            <span class="exp-arrow">↗</span>
+            <div class="exp-year">JAN 2022 — MAR 2023</div>
             <div>
-              <div class="exp-role">Brand Specialist, UI/UX &amp; Motion Designer</div>
-              <div class="exp-company">Digicart Solutions <span>·</span> Dhaka, Bangladesh</div>
-              <div class="exp-desc">Designed web and mobile products across e-commerce and fintech. Owned brand systems and motion work for multiple client engagements.</div>
+              <div class="exp-role">User Experience Designer</div>
+              <div class="exp-company">iHealthScreen Inc <span>·</span> New York, United States (Remote)</div>
+              <div class="exp-desc">Revamped landing pages, dashboards, and an LMS platform for a telemedicine product. Ran surveys and analytics reviews to inform design decisions, and built storyboards to align stakeholders on product direction.</div>
             </div>
-          </div>
+          </a>
+
+          <!-- Card 4 (no URL) -->
           <div class="exp-item">
-            <div class="exp-year">2018 — 2020</div>
+            <div class="exp-year">JUL 2020 — DEC 2021</div>
             <div>
-              <div class="exp-role">Visualizer &amp; Motion Designer</div>
-              <div class="exp-company">Banglamark Group <span>·</span> Bangladesh</div>
-              <div class="exp-desc">Built the visual vocabulary — identity systems, motion graphics, and product marketing assets for a portfolio of consumer brands.</div>
+              <div class="exp-role">Senior Visualizer</div>
+              <div class="exp-company">Ad Headquarter ltd. <span>·</span> Dhaka, Bangladesh</div>
+              <div class="exp-desc">Established creative direction and brand guidelines while managing multiple concurrent projects. Produced print and digital collateral end-to-end, including image retouching and brand systems.</div>
             </div>
           </div>
-          <div class="exp-item">
-            <div class="exp-year">2016 — 2018</div>
-            <div>
-              <div class="exp-role">Freelance &amp; Independent Work</div>
-              <div class="exp-company">Creaveer Design <span>·</span> Global clients</div>
-              <div class="exp-desc">Started out taking on SaaS UI, mobile apps, and brand identity projects for founders and startups around the world.</div>
+
+        </div><!-- /.exp-list -->
+
+        <button class="exp-more-btn" id="exp-more-btn" aria-expanded="false">Show 15 more roles ↓</button>
+
+        <div class="exp-compact-wrap" id="exp-compact-wrap" aria-hidden="true">
+          <div class="exp-compact-list">
+
+            <a href="https://likee.video" target="_blank" rel="noopener noreferrer" class="exp-compact-row">
+              <span class="exp-compact-date">MAY 2020 — DEC 2021</span>
+              <span class="exp-compact-role">Online Content Moderator <em>· Likee</em></span>
+              <span class="exp-compact-loc">Bangladesh</span>
+              <span class="exp-compact-link">↗</span>
+            </a>
+
+            <a href="https://www.bigo.tv" target="_blank" rel="noopener noreferrer" class="exp-compact-row">
+              <span class="exp-compact-date">MAY 2020 — DEC 2021</span>
+              <span class="exp-compact-role">Content Moderator <em>· BIGO</em></span>
+              <span class="exp-compact-loc">Bangladesh</span>
+              <span class="exp-compact-link">↗</span>
+            </a>
+
+            <a href="https://imo.im" target="_blank" rel="noopener noreferrer" class="exp-compact-row">
+              <span class="exp-compact-date">MAY 2020 — DEC 2021</span>
+              <span class="exp-compact-role">Content Moderator <em>· IMO</em></span>
+              <span class="exp-compact-loc">Contract</span>
+              <span class="exp-compact-link">↗</span>
+            </a>
+
+            <div class="exp-compact-row">
+              <span class="exp-compact-date">MAY 2020 — DEC 2021</span>
+              <span class="exp-compact-role">Online Content Moderator <em>· NETSTAR (SG) PTE. LTD</em></span>
+              <span class="exp-compact-loc">Bangladesh</span>
+              <span class="exp-compact-link"></span>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+            <div class="exp-compact-row">
+              <span class="exp-compact-date">OCT 2020 — NOV 2021</span>
+              <span class="exp-compact-role">Graphic UI Designer <em>· DiGiCart Solutions</em></span>
+              <span class="exp-compact-loc"></span>
+              <span class="exp-compact-link"></span>
+            </div>
+
+            <div class="exp-compact-row">
+              <span class="exp-compact-date">AUG 2019 — JUN 2020</span>
+              <span class="exp-compact-role">UI Designer <em>· Instafashion Official</em></span>
+              <span class="exp-compact-loc">Germany (Freelance)</span>
+              <span class="exp-compact-link"></span>
+            </div>
+
+            <div class="exp-compact-row">
+              <span class="exp-compact-date">DEC 2019 — MAY 2020</span>
+              <span class="exp-compact-role">Creative Designer <em>· DiGicart</em></span>
+              <span class="exp-compact-loc">Dhaka</span>
+              <span class="exp-compact-link"></span>
+            </div>
+
+            <div class="exp-compact-row">
+              <span class="exp-compact-date">SEP 2019 — NOV 2019</span>
+              <span class="exp-compact-role">Visual Designer <em>· Banglamark Corporation</em></span>
+              <span class="exp-compact-loc">Baridhara</span>
+              <span class="exp-compact-link"></span>
+            </div>
+
+            <a href="https://kallolgroup.com" target="_blank" rel="noopener noreferrer" class="exp-compact-row">
+              <span class="exp-compact-date">SEP 2018 — JUN 2019</span>
+              <span class="exp-compact-role">Officer <em>· Kallol Group of Companies</em></span>
+              <span class="exp-compact-loc">Bangladesh</span>
+              <span class="exp-compact-link">↗</span>
+            </a>
+
+            <div class="exp-compact-row">
+              <span class="exp-compact-date">OCT 2017 — DEC 2018</span>
+              <span class="exp-compact-role">Creative Lead / Co-founder <em>· Cocoon Bangladesh</em></span>
+              <span class="exp-compact-loc"></span>
+              <span class="exp-compact-link"></span>
+            </div>
+
+            <a href="https://www.eximbankbd.com" target="_blank" rel="noopener noreferrer" class="exp-compact-row">
+              <span class="exp-compact-date">MAY 2018 — SEP 2018</span>
+              <span class="exp-compact-role">Internship Trainee <em>· Export Import Bank of Bangladesh</em></span>
+              <span class="exp-compact-loc">Dhaka</span>
+              <span class="exp-compact-link">↗</span>
+            </a>
+
+            <a href="https://10minuteschool.com" target="_blank" rel="noopener noreferrer" class="exp-compact-row">
+              <span class="exp-compact-date">FEB 2018 — APR 2018</span>
+              <span class="exp-compact-role">Designer <em>· 10 Minute School</em></span>
+              <span class="exp-compact-loc">Dhaka</span>
+              <span class="exp-compact-link">↗</span>
+            </a>
+
+            <div class="exp-compact-row">
+              <span class="exp-compact-date">JUL 2016 — AUG 2017</span>
+              <span class="exp-compact-role">Content Creator <em>· HumanKind Academy</em></span>
+              <span class="exp-compact-loc">University of Dhaka</span>
+              <span class="exp-compact-link"></span>
+            </div>
+
+            <div class="exp-compact-row">
+              <span class="exp-compact-date">APR 2017 — MAY 2017</span>
+              <span class="exp-compact-role">Campaign Coordinator <em>· Venturas Ltd</em></span>
+              <span class="exp-compact-loc"></span>
+              <span class="exp-compact-link"></span>
+            </div>
+
+            <a href="https://10minuteschool.com" target="_blank" rel="noopener noreferrer" class="exp-compact-row">
+              <span class="exp-compact-date">FEB 2017 — MAY 2017</span>
+              <span class="exp-compact-role">Graphic Design Intern <em>· 10 Minute School</em></span>
+              <span class="exp-compact-loc"></span>
+              <span class="exp-compact-link">↗</span>
+            </a>
+
+          </div><!-- /.exp-compact-list -->
+        </div><!-- /.exp-compact-wrap -->
+
+      </div><!-- /right column -->
+    </div><!-- /.exp-grid -->
+  </div><!-- /.container -->
 </section>
 
 <!-- ============ GALLERY ============ -->
@@ -3071,6 +3398,42 @@
             }, 60 + i * 38);
           });
         }
+      });
+    }
+  }());
+
+  // experience cards: stagger scroll-in + show-more toggle
+  (function(){
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var expList = document.getElementById('exp-list');
+    if (expList) {
+      var cards = expList.querySelectorAll('.exp-item');
+      if (reducedMotion) {
+        cards.forEach(function(c){ c.classList.add('in'); });
+      } else {
+        var expObs = new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){
+            if (!entry.isIntersecting) return;
+            cards.forEach(function(card, i){
+              setTimeout(function(){ card.classList.add('in'); }, i * 120);
+            });
+            expObs.unobserve(entry.target);
+          });
+        }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+        expObs.observe(expList);
+      }
+    }
+
+    var expMoreBtn = document.getElementById('exp-more-btn');
+    var expCompact = document.getElementById('exp-compact-wrap');
+    if (expMoreBtn && expCompact) {
+      var expExpanded = false;
+      expMoreBtn.addEventListener('click', function(){
+        expExpanded = !expExpanded;
+        expCompact.classList.toggle('open', expExpanded);
+        expMoreBtn.setAttribute('aria-expanded', String(expExpanded));
+        expCompact.setAttribute('aria-hidden', String(!expExpanded));
+        expMoreBtn.textContent = expExpanded ? 'Show less ↑' : 'Show 15 more roles ↓';
       });
     }
   }());
