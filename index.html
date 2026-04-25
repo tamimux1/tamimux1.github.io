@@ -1224,11 +1224,39 @@
     display:inline-flex;
     align-items:center;
     gap:4px;
-    border-bottom:1px solid rgba(232,255,92,0.3);
     padding-bottom:2px;
-    transition:gap .3s ease, border-color .3s ease;
+    position:relative;
+    transition:gap .3s ease;
   }
-  .cert-link:hover{ gap:8px; border-color:var(--accent); }
+  .cert-link::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width:0; height:1px;
+    background:var(--accent);
+    transition:width .35s cubic-bezier(0.25,1,.5,1);
+  }
+  .cert-link:hover::after{ width:100%; }
+  .clink-arrow{
+    display:inline-block;
+    transition:transform .3s cubic-bezier(0.25,1,.5,1);
+  }
+  .cert-link:hover .clink-arrow{ transform:translateX(4px); }
+  .cert-no-verify{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.05em;
+    color:var(--ink-mute);
+    text-transform:uppercase;
+  }
+  .cert-list-no-verify{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--ink-mute);
+    opacity:0.5;
+    text-align:right;
+    flex-shrink:0;
+  }
 
   /* --- "show all" expand button --- */
   .cert-expand-btn{
@@ -1338,12 +1366,21 @@
     display:inline-flex;
     align-items:center;
     gap:2px;
-    border-bottom:1px solid rgba(232,255,92,0.3);
     padding-bottom:1px;
-    transition:gap .2s ease, border-color .2s ease;
+    position:relative;
+    transition:transform .25s cubic-bezier(0.25,1,.5,1);
     flex-shrink:0;
   }
-  .cert-list-link:hover{ gap:6px; border-color:var(--accent); }
+  .cert-list-link::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width:0; height:1px;
+    background:var(--accent);
+    transition:width .3s cubic-bezier(0.25,1,.5,1);
+  }
+  .cert-list-link:hover{ transform:translateX(4px); }
+  .cert-list-link:hover::after{ width:100%; }
 
   @media (max-width:768px){
     .cert-list-row{
@@ -2504,7 +2541,6 @@
     </div>
 
     <!-- Featured 6 cards -->
-    <!-- Replace href="#" below with real Coursera/Google credential URLs when available -->
     <div class="cert-grid" id="cert-grid">
 
       <!-- 1. Google UX Design Specialization -->
@@ -2517,11 +2553,11 @@
         <div class="cert-date-label">Nov 2023</div>
         <div class="cert-id-wrap" title="Credential ID: VXGTX6ZMDY9W">ID: VXGTX6ZMDY9W</div>
         <div class="cert-footer">
-          <a href="#" class="cert-link">View credential →</a>
+          <a href="https://www.coursera.org/account/accomplishments/specialization/VXGTX6ZMDY9W" target="_blank" rel="noopener noreferrer" class="cert-link">View credential <span class="clink-arrow">→</span></a>
         </div>
       </div>
 
-      <!-- 2. Fundamentals of Digital Marketing -->
+      <!-- 2. Fundamentals of Digital Marketing — no public verify -->
       <div class="cert-card" data-category="marketing">
         <div class="cert-header">
           <span class="cert-badge">G</span>
@@ -2531,7 +2567,7 @@
         <div class="cert-date-label">Issued</div>
         <div class="cert-id-wrap" title="Credential ID: CQU G29 RVQ">ID: CQU G29 RVQ</div>
         <div class="cert-footer">
-          <a href="#" class="cert-link">View credential →</a>
+          <span class="cert-no-verify">No public verification</span>
         </div>
       </div>
 
@@ -2545,11 +2581,11 @@
         <div class="cert-date-label">Feb 2022</div>
         <div class="cert-id-wrap" title="Credential ID: VZ8M7FV2TFW3">ID: VZ8M7FV2TFW3</div>
         <div class="cert-footer">
-          <a href="#" class="cert-link">View credential →</a>
+          <a href="https://www.coursera.org/account/accomplishments/verify/VZ8M7FV2TFW3" target="_blank" rel="noopener noreferrer" class="cert-link">View credential <span class="clink-arrow">→</span></a>
         </div>
       </div>
 
-      <!-- 4. Professional Graphic Design -->
+      <!-- 4. Professional Graphic Design — no public verify -->
       <div class="cert-card" data-category="ux-design">
         <div class="cert-header">
           <span class="cert-badge" style="font-size:7px;">CIT</span>
@@ -2559,7 +2595,7 @@
         <div class="cert-date-label">Jan 2019</div>
         <div class="cert-id-wrap" style="visibility:hidden;" aria-hidden="true">—</div>
         <div class="cert-footer">
-          <a href="#" class="cert-link">View credential →</a>
+          <span class="cert-no-verify">No public verification</span>
         </div>
       </div>
 
@@ -2573,7 +2609,7 @@
         <div class="cert-date-label">Sep 2023</div>
         <div class="cert-id-wrap" title="Credential ID: 3Q9HEDMZF599">ID: 3Q9HEDMZF599</div>
         <div class="cert-footer">
-          <a href="#" class="cert-link">View credential →</a>
+          <a href="https://www.coursera.org/account/accomplishments/verify/3Q9HEDMZF599" target="_blank" rel="noopener noreferrer" class="cert-link">View credential <span class="clink-arrow">→</span></a>
         </div>
       </div>
 
@@ -2587,7 +2623,7 @@
         <div class="cert-date-label">Oct 2023</div>
         <div class="cert-id-wrap" title="Credential ID: 5877KMH5MHVV">ID: 5877KMH5MHVV</div>
         <div class="cert-footer">
-          <a href="#" class="cert-link">View credential →</a>
+          <a href="https://www.coursera.org/account/accomplishments/verify/5877KMH5MHVV" target="_blank" rel="noopener noreferrer" class="cert-link">View credential <span class="clink-arrow">→</span></a>
         </div>
       </div>
 
@@ -2602,7 +2638,7 @@
     <div class="cert-expand-wrap" id="cert-expand-wrap" aria-hidden="true">
       <div class="cert-list" id="cert-list">
 
-        <!-- 7 -->
+        <!-- 7. Design a UX for Social Good -->
         <div class="cert-list-row" data-category="ux-design">
           <span class="cert-list-badge">C</span>
           <div class="cert-list-info">
@@ -2610,10 +2646,10 @@
             <span class="cert-list-meta">Coursera · Oct 2023</span>
           </div>
           <span class="cert-list-id" title="5CBH6QJFHPJN">5CBH6QJFHPJN</span>
-          <a href="#" class="cert-list-link">→</a>
+          <a href="https://www.coursera.org/account/accomplishments/verify/5CBH6QJFHPJN" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
         </div>
 
-        <!-- 8 -->
+        <!-- 8. Build Dynamic User Interfaces -->
         <div class="cert-list-row" data-category="ux-design">
           <span class="cert-list-badge">C</span>
           <div class="cert-list-info">
@@ -2621,10 +2657,10 @@
             <span class="cert-list-meta">Coursera · Oct 2023</span>
           </div>
           <span class="cert-list-id" title="WLZPQL3ESZBF">WLZPQL3ESZBF</span>
-          <a href="#" class="cert-list-link">→</a>
+          <a href="https://www.coursera.org/account/accomplishments/verify/WLZPQL3ESZBF" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
         </div>
 
-        <!-- 9 -->
+        <!-- 9. Build Wireframes -->
         <div class="cert-list-row" data-category="ux-design">
           <span class="cert-list-badge">C</span>
           <div class="cert-list-info">
@@ -2632,10 +2668,10 @@
             <span class="cert-list-meta">Coursera · Aug 2022</span>
           </div>
           <span class="cert-list-id" title="8f9af4b94f759b3c4450a5c29b636711">8f9af4b9…636711</span>
-          <a href="#" class="cert-list-link">→</a>
+          <a href="https://www.coursera.org/account/accomplishments/verify/8f9af4b94f759b3c4450a5c29b636711" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
         </div>
 
-        <!-- 10 -->
+        <!-- 10. Start the UX Design Process -->
         <div class="cert-list-row" data-category="ux-design">
           <span class="cert-list-badge">C</span>
           <div class="cert-list-info">
@@ -2643,10 +2679,10 @@
             <span class="cert-list-meta">Coursera · Jul 2022</span>
           </div>
           <span class="cert-list-id" title="EQU5QPLZ9XBE">EQU5QPLZ9XBE</span>
-          <a href="#" class="cert-list-link">→</a>
+          <a href="https://www.coursera.org/account/accomplishments/verify/EQU5QPLZ9XBE" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
         </div>
 
-        <!-- 11 -->
+        <!-- 11. After Effects CC -->
         <div class="cert-list-row" data-category="ux-design">
           <span class="cert-list-badge">U</span>
           <div class="cert-list-info">
@@ -2654,10 +2690,10 @@
             <span class="cert-list-meta">Udemy</span>
           </div>
           <span class="cert-list-id" title="UC-a85bacbb-12c6-46ce-b46b-a9937e3e013c">UC-a85bacbb…013c</span>
-          <a href="#" class="cert-list-link">→</a>
+          <a href="https://www.udemy.com/certificate/UC-a85bacbb-12c6-46ce-b46b-a9937e3e013c/" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
         </div>
 
-        <!-- 12 -->
+        <!-- 12. Adobe Premiere Pro CC -->
         <div class="cert-list-row" data-category="ux-design">
           <span class="cert-list-badge">U</span>
           <div class="cert-list-info">
@@ -2665,10 +2701,10 @@
             <span class="cert-list-meta">Udemy · Mar 2019</span>
           </div>
           <span class="cert-list-id" title="UC-f4c35d5b-9d71-42c7-a16f-63cf7dc7b13e">UC-f4c35d5b…b13e</span>
-          <a href="#" class="cert-list-link">→</a>
+          <a href="https://www.udemy.com/certificate/UC-f4c35d5b-9d71-42c7-a16f-63cf7dc7b13e/" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
         </div>
 
-        <!-- 13 -->
+        <!-- 13. Adobe Lightroom CC -->
         <div class="cert-list-row" data-category="ux-design">
           <span class="cert-list-badge">U</span>
           <div class="cert-list-info">
@@ -2676,10 +2712,10 @@
             <span class="cert-list-meta">Udemy · Mar 2018</span>
           </div>
           <span class="cert-list-id" title="UC-f8a5ab7d-945e-4bc9-afd8-6a82b0876baf">UC-f8a5ab7d…6baf</span>
-          <a href="#" class="cert-list-link">→</a>
+          <a href="https://www.udemy.com/certificate/UC-f8a5ab7d-945e-4bc9-afd8-6a82b0876baf/" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
         </div>
 
-        <!-- 14 -->
+        <!-- 14. Adobe Photoshop CC -->
         <div class="cert-list-row" data-category="ux-design">
           <span class="cert-list-badge">U</span>
           <div class="cert-list-info">
@@ -2687,10 +2723,10 @@
             <span class="cert-list-meta">Udemy · Jul 2016</span>
           </div>
           <span class="cert-list-id" title="UC-52a343d7-be94-4d28-8536-2e3810f8c99d">UC-52a343d7…c99d</span>
-          <a href="#" class="cert-list-link">→</a>
+          <a href="https://www.udemy.com/certificate/UC-52a343d7-be94-4d28-8536-2e3810f8c99d/" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
         </div>
 
-        <!-- 15 -->
+        <!-- 15. Content Marketing -->
         <div class="cert-list-row" data-category="marketing">
           <span class="cert-list-badge">U</span>
           <div class="cert-list-info">
@@ -2698,10 +2734,10 @@
             <span class="cert-list-meta">Udemy · Jan 2021</span>
           </div>
           <span class="cert-list-id" title="UC-1ddbbcc9-607b-4a9c-86fe-e306f7b86f34">UC-1ddbbcc9…f34</span>
-          <a href="#" class="cert-list-link">→</a>
+          <a href="https://www.udemy.com/certificate/UC-1ddbbcc9-607b-4a9c-86fe-e306f7b86f34/" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
         </div>
 
-        <!-- 16 -->
+        <!-- 16. Run Facebook Ads -->
         <div class="cert-list-row" data-category="marketing">
           <span class="cert-list-badge">U</span>
           <div class="cert-list-info">
@@ -2709,21 +2745,21 @@
             <span class="cert-list-meta">Udemy · Jan 2020</span>
           </div>
           <span class="cert-list-id" title="UC-d3e2e316-cc5f-4137-8ad0-079145458171">UC-d3e2e316…8171</span>
-          <a href="#" class="cert-list-link">→</a>
+          <a href="https://www.udemy.com/certificate/UC-d3e2e316-cc5f-4137-8ad0-079145458171/" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
         </div>
 
-        <!-- 17 -->
+        <!-- 17. Personal Branding — Lynda (archived) -->
         <div class="cert-list-row" data-category="marketing">
           <span class="cert-list-badge">L</span>
           <div class="cert-list-info">
             <span class="cert-list-name">Personal Branding on Social Media</span>
-            <span class="cert-list-meta">Lynda.com · Jan 2017</span>
+            <span class="cert-list-meta">Lynda.com · Jan 2017 · (archived)</span>
           </div>
           <span class="cert-list-id" title="E43B24">E43B24</span>
-          <a href="#" class="cert-list-link">→</a>
+          <span class="cert-list-no-verify">—</span>
         </div>
 
-        <!-- 18 -->
+        <!-- 18. Photography Business -->
         <div class="cert-list-row" data-category="software-tools">
           <span class="cert-list-badge">U</span>
           <div class="cert-list-info">
@@ -2731,21 +2767,21 @@
             <span class="cert-list-meta">Udemy</span>
           </div>
           <span class="cert-list-id" title="UC-1639f0aa-3ddf-43ed-ac10-7c5265562fd8">UC-1639f0aa…fd8</span>
-          <a href="#" class="cert-list-link">→</a>
+          <a href="https://www.udemy.com/certificate/UC-1639f0aa-3ddf-43ed-ac10-7c5265562fd8/" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
         </div>
 
-        <!-- 19 -->
+        <!-- 19. Managing International Projects — Lynda (archived) -->
         <div class="cert-list-row" data-category="software-tools">
           <span class="cert-list-badge">L</span>
           <div class="cert-list-info">
             <span class="cert-list-name">Managing International Projects</span>
-            <span class="cert-list-meta">Lynda.com · Jan 2017</span>
+            <span class="cert-list-meta">Lynda.com · Jan 2017 · (archived)</span>
           </div>
           <span class="cert-list-id" title="B9575B">B9575B</span>
-          <a href="#" class="cert-list-link">→</a>
+          <span class="cert-list-no-verify">—</span>
         </div>
 
-        <!-- 20 -->
+        <!-- 20. Microsoft Office — IIT (no public verify) -->
         <div class="cert-list-row" data-category="software-tools">
           <span class="cert-list-badge" style="font-size:7px;">IIT</span>
           <div class="cert-list-info">
@@ -2753,10 +2789,10 @@
             <span class="cert-list-meta">IIT, University of Dhaka · May 2018</span>
           </div>
           <span class="cert-list-id">—</span>
-          <a href="#" class="cert-list-link">→</a>
+          <span class="cert-list-no-verify">—</span>
         </div>
 
-        <!-- 21 -->
+        <!-- 21. Learning and Earning — ICT Division (no public verify) -->
         <div class="cert-list-row" data-category="ux-design">
           <span class="cert-list-badge" style="font-size:7px;">ICT</span>
           <div class="cert-list-info">
@@ -2764,10 +2800,10 @@
             <span class="cert-list-meta">ICT Division · Sep 2017 · Expired Dec 2017</span>
           </div>
           <span class="cert-list-id">—</span>
-          <a href="#" class="cert-list-link">→</a>
+          <span class="cert-list-no-verify">—</span>
         </div>
 
-        <!-- 22 -->
+        <!-- 22. Speak English with ACO (no public verify) -->
         <div class="cert-list-row" data-category="software-tools">
           <span class="cert-list-badge" style="font-size:7px;">ACO</span>
           <div class="cert-list-info">
@@ -2775,7 +2811,7 @@
             <span class="cert-list-meta">ACO</span>
           </div>
           <span class="cert-list-id" title="UID3216255">UID3216255</span>
-          <a href="#" class="cert-list-link">→</a>
+          <span class="cert-list-no-verify">—</span>
         </div>
 
       </div><!-- /.cert-list -->
