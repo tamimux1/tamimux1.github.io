@@ -2150,6 +2150,146 @@
     }
     .glow-core{ display:none; }
   }
+
+  /* ======================= WHATSAPP BUTTON ======================= */
+  @keyframes wa-breathe{
+    0%,100%{ box-shadow: 0 4px 24px rgba(0,0,0,0.25); }
+    50%{ box-shadow: 0 4px 24px rgba(0,0,0,0.25), 0 0 32px 8px rgba(232,255,92,0.18); }
+  }
+  @keyframes wa-wiggle{
+    0%  { transform: rotate(0deg); }
+    25% { transform: rotate(-8deg); }
+    75% { transform: rotate(8deg); }
+    100%{ transform: rotate(0deg); }
+  }
+  .cta-cluster{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+    margin-bottom: 48px;
+  }
+  .wa-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--accent);
+    color: #0a0a0a;
+    text-decoration: none;
+    padding: 18px 28px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    animation: wa-breathe 3s ease-in-out infinite;
+    transition: transform 300ms cubic-bezier(0.25,1,0.5,1),
+                box-shadow 300ms cubic-bezier(0.25,1,0.5,1);
+  }
+  .wa-btn:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(232,255,92,0.38), 0 4px 14px rgba(0,0,0,0.3);
+    animation: none;
+  }
+  .wa-btn:hover .wa-icon{ animation: wa-wiggle 400ms ease-in-out; }
+  .wa-btn:focus-visible{
+    outline: 2px solid #0a0a0a;
+    outline-offset: 3px;
+    border-radius: 10px;
+  }
+  .wa-icon{
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    width: 26px;
+    height: 26px;
+  }
+  .wa-icon svg{ width:26px; height:26px; fill:currentColor; display:block; }
+  .wa-btn-text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    line-height: 1;
+  }
+  .wa-btn-main{
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .wa-btn-sub{
+    font-family: var(--mono);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    opacity: 0.65;
+  }
+
+  /* ======================= SOCIAL ICON ROW ======================= */
+  .social-icon-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
+  }
+  .social-icon-link{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    position: relative;
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      color      250ms cubic-bezier(0.25,1,0.5,1),
+      transform  250ms cubic-bezier(0.25,1,0.5,1),
+      opacity    250ms cubic-bezier(0.25,1,0.5,1),
+      filter     250ms cubic-bezier(0.25,1,0.5,1);
+  }
+  .social-icon-link::after{
+    content: "";
+    display: block;
+    height: 1.5px;
+    width: 0%;
+    background: var(--accent);
+    transition: width 250ms cubic-bezier(0.25,1,0.5,1);
+    margin-top: 5px;
+  }
+  .social-icon-link.icon-visible{
+    opacity: 0.6;
+    transform: none;
+  }
+  .social-icon-link:hover{
+    color: var(--accent);
+    opacity: 1 !important;
+    transform: scale(1.15) !important;
+    filter: drop-shadow(0 0 8px rgba(232,255,92,0.55));
+  }
+  .social-icon-link:hover::after{ width: 100%; }
+  .social-icon-link:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 5px;
+    border-radius: 4px;
+  }
+  .social-icon-link svg{
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    display: block;
+  }
+
+  @media (min-width: 769px){
+    .cta-cluster{
+      display: inline-flex;
+      align-items: flex-start;
+    }
+    .wa-btn{
+      width: auto;
+      max-width: 340px;
+    }
+    .social-icon-row{ justify-content: flex-start; }
+  }
 </style>
 </head>
 <body>
@@ -3253,15 +3393,95 @@
       </h2>
       <p>I'm currently booking new projects for Q2 2026. Whether it's a full product from zero, a redesign, or a design-system overhaul — I'd love to hear about it.</p>
 
-      <a href="mailto:tamim.uiux@gmail.com" class="contact-email">tamim.uiux@gmail.com →</a>
+      <!-- WhatsApp + Social CTA cluster -->
+      <div class="cta-cluster">
 
-      <div class="contact-socials">
-        <a href="https://www.linkedin.com/in/tamimtanvir/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://www.behance.net/creaveer" target="_blank" rel="noopener">Behance</a>
-        <a href="https://www.instagram.com/tamim.designsoul/" target="_blank" rel="noopener">Instagram</a>
-        <a href="http://dribbble.com/creaveer" target="_blank" rel="noopener">Dribbble</a>
-        <a href="http://twitter.com/tanvir2402" target="_blank" rel="noopener">X</a>
-      </div>
+        <!-- Primary CTA: WhatsApp -->
+        <a href="https://wa.me/8801786978000?text=Hi%20Tamim%2C%20I%20saw%20your%20portfolio"
+           class="wa-btn"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Message Tamim on WhatsApp">
+          <span class="wa-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+          </span>
+          <span class="wa-btn-text">
+            <span class="wa-btn-main">Message on WhatsApp</span>
+            <span class="wa-btn-sub">Usually reply within a few hours</span>
+          </span>
+        </a>
+
+        <!-- Social icon row — 9 platforms -->
+        <div class="social-icon-row" id="social-icon-row">
+
+          <a href="https://www.linkedin.com/in/tamimtanvir/"
+             class="social-icon-link"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="LinkedIn profile" title="LinkedIn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+
+          <a href="https://www.behance.net/creaveer"
+             class="social-icon-link"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Behance portfolio" title="Behance">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M22.5 11.856c0 .34-.01.68-.028 1.01h-9.5c.124 1.31.618 2.364 1.485 3.157.866.79 1.95 1.186 3.248 1.186.977 0 1.85-.224 2.617-.67.768-.447 1.295-1.063 1.582-1.85h3.2c-.49 1.543-1.306 2.78-2.453 3.71C21.505 20.13 19.96 20.6 18.02 20.6c-1.476 0-2.798-.334-3.963-1.001a7.16 7.16 0 01-2.71-2.813c-.65-1.21-.975-2.603-.975-4.178 0-1.576.325-2.977.975-4.202a7.092 7.092 0 012.71-2.82c1.165-.667 2.487-1 3.963-1 1.477 0 2.79.333 3.942 1 1.15.666 2.044 1.604 2.68 2.813.638 1.21.957 2.586.957 4.128zm-4.48-2.828c-.12-1.168-.54-2.108-1.262-2.823-.72-.713-1.674-1.07-2.86-1.07-1.115 0-2.05.363-2.804 1.09-.755.727-1.21 1.66-1.364 2.802h8.29zM15.68 3.017h-6.3V4.44h6.3V3.017zM0 20.456V3.543h7.01c1.09 0 2.046.15 2.87.452.82.3 1.474.755 1.96 1.366.487.608.73 1.36.73 2.254 0 .79-.193 1.462-.58 2.018-.385.555-.93.975-1.635 1.258.875.274 1.562.763 2.062 1.467.5.703.75 1.55.75 2.54 0 .984-.266 1.842-.797 2.575-.53.73-1.26 1.295-2.19 1.69-.93.4-1.99.6-3.18.6H0zm3.52-10.27h3.218c.753 0 1.34-.175 1.764-.525.423-.35.635-.848.635-1.493 0-.63-.21-1.115-.63-1.455-.42-.342-.997-.512-1.732-.512H3.52v3.985zm0 6.992h3.505c.87 0 1.55-.188 2.04-.563.49-.375.734-.932.734-1.672 0-.753-.253-1.32-.758-1.7-.505-.38-1.2-.57-2.086-.57H3.52v4.505z"/></svg>
+          </a>
+
+          <a href="https://dribbble.com/tamimuiux"
+             class="social-icon-link"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Dribbble shots" title="Dribbble">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.3-1.555 3.936-4.02 4.392-6.87zm-6.115 7.808c-.153-.9-.75-4.032-2.19-7.77l-.066.02c-5.79 2.015-7.86 6.025-8.04 6.4 1.73 1.358 3.92 2.166 6.29 2.166 1.42 0 2.77-.29 4.006-.816zm-11.62-2.354c.19-.39 2.66-4.7 8.03-6.378.22-.07.435-.13.65-.185-.42-1.04-.864-2.08-1.323-3.07-5.025 1.503-9.9 1.44-10.33 1.43-.015.18-.015.36-.015.54 0 2.94 1.12 5.63 2.98 7.663zm-2.725-9.71c.44.01 4.65.11 9.35-1.21C8.535 4.19 6.7 2.09 6.42 1.765 4.01 2.9 2.17 4.992 1.66 7.58zm6.44-6.63c.29.35 2.18 2.46 3.59 5.57 3.42-1.28 4.86-3.23 5.03-3.47C15.42 1.58 13.79 1.005 12 1.005c-1.42 0-2.78.29-3.9.8zm8.595 3.57c-.2.28-1.79 2.36-5.35 3.8.22.45.43.9.61 1.37.07.18.14.36.21.53 3.38-.43 6.74.26 7.08.33-.05-2.28-.87-4.37-2.27-6.07z"/></svg>
+          </a>
+
+          <a href="https://www.instagram.com/tamim.designsoul/"
+             class="social-icon-link"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Instagram profile" title="Instagram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.74 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 3.252.148 4.771 1.691 4.919 4.919.054 1.265.065 1.645.065 4.849 0 3.205-.012 3.584-.065 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+
+          <a href="https://www.youtube.com/@tamim.designai"
+             class="social-icon-link"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="YouTube channel" title="YouTube">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+          </a>
+
+          <a href="https://x.com/TamimUXinsight"
+             class="social-icon-link"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="X profile" title="X">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+
+          <a href="https://www.facebook.com/profile.php?id=100077362560673"
+             class="social-icon-link"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Facebook profile" title="Facebook">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+
+          <a href="https://github.com/tamimux1/"
+             class="social-icon-link"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="GitHub profile" title="GitHub">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+
+          <a href="mailto:tamim.uiux@gmail.com"
+             class="social-icon-link"
+             aria-label="Send email" title="Email">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </a>
+
+        </div><!-- /social-icon-row -->
+      </div><!-- /cta-cluster -->
+
+      <a href="mailto:tamim.uiux@gmail.com" class="contact-email">tamim.uiux@gmail.com →</a>
     </div>
   </div>
 </section>
@@ -3576,6 +3796,23 @@
     }
 
     requestAnimationFrame(tick);
+  }());
+
+  // social icon row — staggered scroll entrance
+  (function(){
+    const row = document.getElementById('social-icon-row');
+    if (!row) return;
+    const links = row.querySelectorAll('.social-icon-link');
+    const iconObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        links.forEach((link, i) => {
+          setTimeout(() => link.classList.add('icon-visible'), i * 60);
+        });
+        iconObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -60px 0px' });
+    iconObserver.observe(row);
   }());
 </script>
 </body>
