@@ -2854,7 +2854,7 @@
 <section id="certifications" class="certifications">
   <div class="container">
     <div class="reveal">
-      <div class="section-label">Certifications · 05</div>
+      <div class="section-label">Certifications · 06</div>
       <h2 class="section-title">Credentials &amp; <em>continuous</em><br>learning.</h2>
     </div>
 
@@ -2863,19 +2863,18 @@
       <button class="cert-filter-btn active" data-filter="all">All</button>
       <button class="cert-filter-btn" data-filter="ux-design">UX / Design</button>
       <button class="cert-filter-btn" data-filter="marketing">Marketing</button>
-      <button class="cert-filter-btn" data-filter="software-tools">Software / Tools</button>
     </div>
 
-    <!-- Featured 6 cards -->
+    <!-- Featured: Google UX Design Specialization, shown largest -->
     <div class="cert-grid" id="cert-grid">
 
       <!-- 1. Google UX Design Specialization -->
-      <div class="cert-card" data-category="ux-design">
+      <div class="cert-card" data-category="ux-design" style="grid-column:1 / -1; padding:36px 32px 28px;">
         <div class="cert-header">
-          <span class="cert-badge">C</span>
+          <span class="cert-badge" style="width:40px;height:40px;font-size:11px;">C</span>
           <span class="cert-issuer">Coursera</span>
         </div>
-        <div class="cert-name">Google UX Design Specialization</div>
+        <div class="cert-name" style="font-size:26px; -webkit-line-clamp:1; line-clamp:1; min-height:auto;">Google UX Design Specialization</div>
         <div class="cert-date-label">Nov 2023</div>
         <div class="cert-id-wrap" title="Credential ID: VXGTX6ZMDY9W">ID: VXGTX6ZMDY9W</div>
         <div class="cert-footer">
@@ -2883,132 +2882,115 @@
         </div>
       </div>
 
-      <!-- 2. Fundamentals of Digital Marketing — no public verify -->
-      <div class="cert-card" data-category="marketing">
-        <div class="cert-header">
-          <span class="cert-badge">G</span>
-          <span class="cert-issuer">Google Digital Garage</span>
-        </div>
-        <div class="cert-name">Fundamentals of Digital Marketing</div>
-        <div class="cert-date-label">Issued</div>
-        <div class="cert-id-wrap" title="Credential ID: CQU G29 RVQ">ID: CQU G29 RVQ</div>
-        <div class="cert-footer">
-          <span class="cert-no-verify">No public verification</span>
-        </div>
-      </div>
-
-      <!-- 3. Foundations of UX Design -->
-      <div class="cert-card" data-category="ux-design">
-        <div class="cert-header">
-          <span class="cert-badge">C</span>
-          <span class="cert-issuer">Coursera</span>
-        </div>
-        <div class="cert-name">Foundations of User Experience (UX) Design</div>
-        <div class="cert-date-label">Feb 2022</div>
-        <div class="cert-id-wrap" title="Credential ID: VZ8M7FV2TFW3">ID: VZ8M7FV2TFW3</div>
-        <div class="cert-footer">
-          <a href="https://www.coursera.org/account/accomplishments/verify/VZ8M7FV2TFW3" target="_blank" rel="noopener noreferrer" class="cert-link">View credential <span class="clink-arrow">→</span></a>
-        </div>
-      </div>
-
-      <!-- 4. Professional Graphic Design — no public verify -->
-      <div class="cert-card" data-category="ux-design">
-        <div class="cert-header">
-          <span class="cert-badge" style="font-size:7px;">CIT</span>
-          <span class="cert-issuer">Creative IT Institute</span>
-        </div>
-        <div class="cert-name">Professional Graphic Design</div>
-        <div class="cert-date-label">Jan 2019</div>
-        <div class="cert-id-wrap" style="visibility:hidden;" aria-hidden="true">—</div>
-        <div class="cert-footer">
-          <span class="cert-no-verify">No public verification</span>
-        </div>
-      </div>
-
-      <!-- 5. Create High-Fidelity Designs in Figma -->
-      <div class="cert-card" data-category="ux-design">
-        <div class="cert-header">
-          <span class="cert-badge">C</span>
-          <span class="cert-issuer">Coursera</span>
-        </div>
-        <div class="cert-name">Create High-Fidelity Designs and Prototypes in Figma</div>
-        <div class="cert-date-label">Sep 2023</div>
-        <div class="cert-id-wrap" title="Credential ID: 3Q9HEDMZF599">ID: 3Q9HEDMZF599</div>
-        <div class="cert-footer">
-          <a href="https://www.coursera.org/account/accomplishments/verify/3Q9HEDMZF599" target="_blank" rel="noopener noreferrer" class="cert-link">View credential <span class="clink-arrow">→</span></a>
-        </div>
-      </div>
-
-      <!-- 6. Conduct UX Research -->
-      <div class="cert-card" data-category="ux-design">
-        <div class="cert-header">
-          <span class="cert-badge">C</span>
-          <span class="cert-issuer">Coursera</span>
-        </div>
-        <div class="cert-name">Conduct UX Research and Test Early Concepts</div>
-        <div class="cert-date-label">Oct 2023</div>
-        <div class="cert-id-wrap" title="Credential ID: 5877KMH5MHVV">ID: 5877KMH5MHVV</div>
-        <div class="cert-footer">
-          <a href="https://www.coursera.org/account/accomplishments/verify/5877KMH5MHVV" target="_blank" rel="noopener noreferrer" class="cert-link">View credential <span class="clink-arrow">→</span></a>
-        </div>
-      </div>
-
     </div><!-- /.cert-grid -->
+
+    <!-- Courses within the Google UX Design Specialization -->
+    <div class="cert-list reveal" id="cert-sub-list">
+
+      <div class="cert-list-row" data-category="ux-design">
+        <span class="cert-list-badge">C</span>
+        <div class="cert-list-info">
+          <span class="cert-list-name">Foundations of User Experience (UX) Design</span>
+          <span class="cert-list-meta">Coursera · Feb 2022</span>
+        </div>
+        <span class="cert-list-id" title="VZ8M7FV2TFW3">VZ8M7FV2TFW3</span>
+        <a href="https://www.coursera.org/account/accomplishments/verify/VZ8M7FV2TFW3" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
+      </div>
+
+      <div class="cert-list-row" data-category="ux-design">
+        <span class="cert-list-badge">C</span>
+        <div class="cert-list-info">
+          <span class="cert-list-name">Start the UX Design Process: Empathize, Define, and Ideate</span>
+          <span class="cert-list-meta">Coursera · Jul 2022</span>
+        </div>
+        <span class="cert-list-id" title="EQU5QPLZ9XBE">EQU5QPLZ9XBE</span>
+        <a href="https://www.coursera.org/account/accomplishments/verify/EQU5QPLZ9XBE" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
+      </div>
+
+      <div class="cert-list-row" data-category="ux-design">
+        <span class="cert-list-badge">C</span>
+        <div class="cert-list-info">
+          <span class="cert-list-name">Build Wireframes and Low-Fidelity Prototypes</span>
+          <span class="cert-list-meta">Coursera · Aug 2022</span>
+        </div>
+        <span class="cert-list-id" title="8f9af4b94f759b3c4450a5c29b636711">8f9af4b9…636711</span>
+        <a href="https://www.coursera.org/account/accomplishments/verify/8f9af4b94f759b3c4450a5c29b636711" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
+      </div>
+
+      <div class="cert-list-row" data-category="ux-design">
+        <span class="cert-list-badge">C</span>
+        <div class="cert-list-info">
+          <span class="cert-list-name">Conduct UX Research and Test Early Concepts</span>
+          <span class="cert-list-meta">Coursera · Oct 2023</span>
+        </div>
+        <span class="cert-list-id" title="5877KMH5MHVV">5877KMH5MHVV</span>
+        <a href="https://www.coursera.org/account/accomplishments/verify/5877KMH5MHVV" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
+      </div>
+
+      <div class="cert-list-row" data-category="ux-design">
+        <span class="cert-list-badge">C</span>
+        <div class="cert-list-info">
+          <span class="cert-list-name">Create High-Fidelity Designs and Prototypes in Figma</span>
+          <span class="cert-list-meta">Coursera · Sep 2023</span>
+        </div>
+        <span class="cert-list-id" title="3Q9HEDMZF599">3Q9HEDMZF599</span>
+        <a href="https://www.coursera.org/account/accomplishments/verify/3Q9HEDMZF599" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
+      </div>
+
+      <div class="cert-list-row" data-category="ux-design">
+        <span class="cert-list-badge">C</span>
+        <div class="cert-list-info">
+          <span class="cert-list-name">Build Dynamic User Interfaces (UI) for Websites</span>
+          <span class="cert-list-meta">Coursera · Oct 2023</span>
+        </div>
+        <span class="cert-list-id" title="WLZPQL3ESZBF">WLZPQL3ESZBF</span>
+        <a href="https://www.coursera.org/account/accomplishments/verify/WLZPQL3ESZBF" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
+      </div>
+
+      <div class="cert-list-row" data-category="ux-design">
+        <span class="cert-list-badge">C</span>
+        <div class="cert-list-info">
+          <span class="cert-list-name">Design a User Experience for Social Good &amp; Prepare for Jobs</span>
+          <span class="cert-list-meta">Coursera · Oct 2023</span>
+        </div>
+        <span class="cert-list-id" title="5CBH6QJFHPJN">5CBH6QJFHPJN</span>
+        <a href="https://www.coursera.org/account/accomplishments/verify/5CBH6QJFHPJN" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
+      </div>
+
+    </div><!-- /#cert-sub-list -->
 
     <!-- Show all toggle -->
     <button class="cert-expand-btn" id="cert-expand-btn" aria-expanded="false">
-      Show all 22 certifications →
+      Show all 15 certifications →
     </button>
 
-    <!-- Expandable remaining 16 in compact list -->
+    <!-- Expandable remaining certifications -->
     <div class="cert-expand-wrap" id="cert-expand-wrap" aria-hidden="true">
       <div class="cert-list" id="cert-list">
 
-        <!-- 7. Design a UX for Social Good -->
-        <div class="cert-list-row" data-category="ux-design">
-          <span class="cert-list-badge">C</span>
+        <!-- Fundamentals of Digital Marketing — no public verify -->
+        <div class="cert-list-row" data-category="marketing">
+          <span class="cert-list-badge">G</span>
           <div class="cert-list-info">
-            <span class="cert-list-name">Design a User Experience for Social Good &amp; Prepare for Jobs</span>
-            <span class="cert-list-meta">Coursera · Oct 2023</span>
+            <span class="cert-list-name">Fundamentals of Digital Marketing</span>
+            <span class="cert-list-meta">Google Digital Garage</span>
           </div>
-          <span class="cert-list-id" title="5CBH6QJFHPJN">5CBH6QJFHPJN</span>
-          <a href="https://www.coursera.org/account/accomplishments/verify/5CBH6QJFHPJN" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
+          <span class="cert-list-id" title="CQU G29 RVQ">CQU G29 RVQ</span>
+          <span class="cert-list-no-verify">—</span>
         </div>
 
-        <!-- 8. Build Dynamic User Interfaces -->
+        <!-- Professional Graphic Design — no public verify -->
         <div class="cert-list-row" data-category="ux-design">
-          <span class="cert-list-badge">C</span>
+          <span class="cert-list-badge" style="font-size:7px;">CIT</span>
           <div class="cert-list-info">
-            <span class="cert-list-name">Build Dynamic User Interfaces (UI) for Websites</span>
-            <span class="cert-list-meta">Coursera · Oct 2023</span>
+            <span class="cert-list-name">Professional Graphic Design</span>
+            <span class="cert-list-meta">Creative IT Institute · Jan 2019</span>
           </div>
-          <span class="cert-list-id" title="WLZPQL3ESZBF">WLZPQL3ESZBF</span>
-          <a href="https://www.coursera.org/account/accomplishments/verify/WLZPQL3ESZBF" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
+          <span class="cert-list-id">—</span>
+          <span class="cert-list-no-verify">—</span>
         </div>
 
-        <!-- 9. Build Wireframes -->
-        <div class="cert-list-row" data-category="ux-design">
-          <span class="cert-list-badge">C</span>
-          <div class="cert-list-info">
-            <span class="cert-list-name">Build Wireframes and Low-Fidelity Prototypes</span>
-            <span class="cert-list-meta">Coursera · Aug 2022</span>
-          </div>
-          <span class="cert-list-id" title="8f9af4b94f759b3c4450a5c29b636711">8f9af4b9…636711</span>
-          <a href="https://www.coursera.org/account/accomplishments/verify/8f9af4b94f759b3c4450a5c29b636711" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
-        </div>
-
-        <!-- 10. Start the UX Design Process -->
-        <div class="cert-list-row" data-category="ux-design">
-          <span class="cert-list-badge">C</span>
-          <div class="cert-list-info">
-            <span class="cert-list-name">Start the UX Design Process: Empathize, Define, and Ideate</span>
-            <span class="cert-list-meta">Coursera · Jul 2022</span>
-          </div>
-          <span class="cert-list-id" title="EQU5QPLZ9XBE">EQU5QPLZ9XBE</span>
-          <a href="https://www.coursera.org/account/accomplishments/verify/EQU5QPLZ9XBE" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
-        </div>
-
-        <!-- 11. After Effects CC -->
+        <!-- After Effects CC -->
         <div class="cert-list-row" data-category="ux-design">
           <span class="cert-list-badge">U</span>
           <div class="cert-list-info">
@@ -3019,7 +3001,7 @@
           <a href="https://www.udemy.com/certificate/UC-a85bacbb-12c6-46ce-b46b-a9937e3e013c/" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
         </div>
 
-        <!-- 12. Adobe Premiere Pro CC -->
+        <!-- Adobe Premiere Pro CC -->
         <div class="cert-list-row" data-category="ux-design">
           <span class="cert-list-badge">U</span>
           <div class="cert-list-info">
@@ -3030,18 +3012,7 @@
           <a href="https://www.udemy.com/certificate/UC-f4c35d5b-9d71-42c7-a16f-63cf7dc7b13e/" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
         </div>
 
-        <!-- 13. Adobe Lightroom CC -->
-        <div class="cert-list-row" data-category="ux-design">
-          <span class="cert-list-badge">U</span>
-          <div class="cert-list-info">
-            <span class="cert-list-name">Adobe Lightroom CC Photo Editing</span>
-            <span class="cert-list-meta">Udemy · Mar 2018</span>
-          </div>
-          <span class="cert-list-id" title="UC-f8a5ab7d-945e-4bc9-afd8-6a82b0876baf">UC-f8a5ab7d…6baf</span>
-          <a href="https://www.udemy.com/certificate/UC-f8a5ab7d-945e-4bc9-afd8-6a82b0876baf/" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
-        </div>
-
-        <!-- 14. Adobe Photoshop CC -->
+        <!-- Adobe Photoshop CC -->
         <div class="cert-list-row" data-category="ux-design">
           <span class="cert-list-badge">U</span>
           <div class="cert-list-info">
@@ -3052,7 +3023,18 @@
           <a href="https://www.udemy.com/certificate/UC-52a343d7-be94-4d28-8536-2e3810f8c99d/" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
         </div>
 
-        <!-- 15. Content Marketing -->
+        <!-- Adobe Lightroom CC -->
+        <div class="cert-list-row" data-category="ux-design">
+          <span class="cert-list-badge">U</span>
+          <div class="cert-list-info">
+            <span class="cert-list-name">Adobe Lightroom CC Photo Editing</span>
+            <span class="cert-list-meta">Udemy · Mar 2018</span>
+          </div>
+          <span class="cert-list-id" title="UC-f8a5ab7d-945e-4bc9-afd8-6a82b0876baf">UC-f8a5ab7d…6baf</span>
+          <a href="https://www.udemy.com/certificate/UC-f8a5ab7d-945e-4bc9-afd8-6a82b0876baf/" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
+        </div>
+
+        <!-- Content Marketing -->
         <div class="cert-list-row" data-category="marketing">
           <span class="cert-list-badge">U</span>
           <div class="cert-list-info">
@@ -3061,83 +3043,6 @@
           </div>
           <span class="cert-list-id" title="UC-1ddbbcc9-607b-4a9c-86fe-e306f7b86f34">UC-1ddbbcc9…f34</span>
           <a href="https://www.udemy.com/certificate/UC-1ddbbcc9-607b-4a9c-86fe-e306f7b86f34/" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
-        </div>
-
-        <!-- 16. Run Facebook Ads -->
-        <div class="cert-list-row" data-category="marketing">
-          <span class="cert-list-badge">U</span>
-          <div class="cert-list-info">
-            <span class="cert-list-name">Run Facebook Ads For Customer</span>
-            <span class="cert-list-meta">Udemy · Jan 2020</span>
-          </div>
-          <span class="cert-list-id" title="UC-d3e2e316-cc5f-4137-8ad0-079145458171">UC-d3e2e316…8171</span>
-          <a href="https://www.udemy.com/certificate/UC-d3e2e316-cc5f-4137-8ad0-079145458171/" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
-        </div>
-
-        <!-- 17. Personal Branding — Lynda (archived) -->
-        <div class="cert-list-row" data-category="marketing">
-          <span class="cert-list-badge">L</span>
-          <div class="cert-list-info">
-            <span class="cert-list-name">Personal Branding on Social Media</span>
-            <span class="cert-list-meta">Lynda.com · Jan 2017 · (archived)</span>
-          </div>
-          <span class="cert-list-id" title="E43B24">E43B24</span>
-          <span class="cert-list-no-verify">—</span>
-        </div>
-
-        <!-- 18. Photography Business -->
-        <div class="cert-list-row" data-category="software-tools">
-          <span class="cert-list-badge">U</span>
-          <div class="cert-list-info">
-            <span class="cert-list-name">Photography Business: A Photography Course</span>
-            <span class="cert-list-meta">Udemy</span>
-          </div>
-          <span class="cert-list-id" title="UC-1639f0aa-3ddf-43ed-ac10-7c5265562fd8">UC-1639f0aa…fd8</span>
-          <a href="https://www.udemy.com/certificate/UC-1639f0aa-3ddf-43ed-ac10-7c5265562fd8/" target="_blank" rel="noopener noreferrer" class="cert-list-link">→</a>
-        </div>
-
-        <!-- 19. Managing International Projects — Lynda (archived) -->
-        <div class="cert-list-row" data-category="software-tools">
-          <span class="cert-list-badge">L</span>
-          <div class="cert-list-info">
-            <span class="cert-list-name">Managing International Projects</span>
-            <span class="cert-list-meta">Lynda.com · Jan 2017 · (archived)</span>
-          </div>
-          <span class="cert-list-id" title="B9575B">B9575B</span>
-          <span class="cert-list-no-verify">—</span>
-        </div>
-
-        <!-- 20. Microsoft Office — IIT (no public verify) -->
-        <div class="cert-list-row" data-category="software-tools">
-          <span class="cert-list-badge" style="font-size:7px;">IIT</span>
-          <div class="cert-list-info">
-            <span class="cert-list-name">Microsoft Office and Avro Keyboard</span>
-            <span class="cert-list-meta">IIT, University of Dhaka · May 2018</span>
-          </div>
-          <span class="cert-list-id">—</span>
-          <span class="cert-list-no-verify">—</span>
-        </div>
-
-        <!-- 21. Learning and Earning — ICT Division (no public verify) -->
-        <div class="cert-list-row" data-category="ux-design">
-          <span class="cert-list-badge" style="font-size:7px;">ICT</span>
-          <div class="cert-list-info">
-            <span class="cert-list-name">Learning and Earning Development (Graphics Designing)</span>
-            <span class="cert-list-meta">ICT Division · Sep 2017 · Expired Dec 2017</span>
-          </div>
-          <span class="cert-list-id">—</span>
-          <span class="cert-list-no-verify">—</span>
-        </div>
-
-        <!-- 22. Speak English with ACO (no public verify) -->
-        <div class="cert-list-row" data-category="software-tools">
-          <span class="cert-list-badge" style="font-size:7px;">ACO</span>
-          <div class="cert-list-info">
-            <span class="cert-list-name">Speak English with ACO</span>
-            <span class="cert-list-meta">ACO</span>
-          </div>
-          <span class="cert-list-id" title="UID3216255">UID3216255</span>
-          <span class="cert-list-no-verify">—</span>
         </div>
 
       </div><!-- /.cert-list -->
@@ -3808,13 +3713,11 @@
         }
       });
 
-      // apply to list rows when expanded
-      if (certList) {
-        certList.querySelectorAll('.cert-list-row').forEach(function(row) {
-          var matches = currentFilter === 'all' || row.dataset.category === currentFilter;
-          row.style.display = matches ? '' : 'none';
-        });
-      }
+      // apply to list rows (sub-course list + expandable list)
+      document.querySelectorAll('.cert-list-row').forEach(function(row) {
+        var matches = currentFilter === 'all' || row.dataset.category === currentFilter;
+        row.style.display = matches ? '' : 'none';
+      });
     }
 
     // --- expand / collapse ---
