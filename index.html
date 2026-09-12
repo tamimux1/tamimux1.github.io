@@ -2152,80 +2152,6 @@
     .glow-core{ display:none; }
   }
 
-  /* ======================= LIQUID CURSOR ======================= */
-  @media (hover:hover) and (pointer:fine){
-    body,
-    a, button, [role=button], input, textarea, select, label,
-    [tabindex], [style*=cursor]{ cursor:none !important; }
-  }
-  #cursor-trail{
-    position:fixed;
-    top:-55px; left:-55px;
-    width:110px; height:110px;
-    border-radius:50%;
-    background: radial-gradient(circle,
-      rgba(61,155,255,0.22) 0%,
-      rgba(157,95,255,0.12) 48%,
-      transparent 68%);
-    filter:blur(22px);
-    mix-blend-mode:screen;
-    pointer-events:none;
-    z-index:9996;
-    opacity:0;
-    will-change:transform;
-    transition:opacity .7s ease;
-  }
-  #cursor-blob{
-    position:fixed;
-    top:-28px; left:-28px;
-    width:56px; height:56px;
-    background: radial-gradient(circle at 38% 38%,
-      rgba(180,220,255,0.98) 0%,
-      rgba(61,155,255,0.88) 32%,
-      rgba(157,95,255,0.62) 64%,
-      transparent 80%);
-    filter:blur(7px);
-    mix-blend-mode:screen;
-    pointer-events:none;
-    z-index:9997;
-    opacity:0;
-    will-change:transform, border-radius;
-    transition:opacity .5s ease, filter .3s ease;
-  }
-  #cursor-dot{
-    position:fixed;
-    top:-4px; left:-4px;
-    width:8px; height:8px;
-    border-radius:50%;
-    background:#ffffff;
-    mix-blend-mode:difference;
-    pointer-events:none;
-    z-index:9998;
-    opacity:0;
-    will-change:transform;
-    transition:opacity .35s ease, width .2s ease, height .2s ease,
-                top .2s ease, left .2s ease;
-  }
-  #cursor-blob.is-hovering{
-    filter:blur(4px);
-    background: radial-gradient(circle at 38% 38%,
-      rgba(220,240,255,1) 0%,
-      rgba(100,185,255,0.95) 28%,
-      rgba(157,95,255,0.72) 60%,
-      transparent 80%);
-  }
-  #cursor-dot.is-hovering{
-    width:14px; height:14px; top:-7px; left:-7px;
-  }
-  #cursor-blob.is-clicking{
-    filter:blur(3px);
-    transform-origin:center;
-  }
-  @keyframes cursor-ripple{
-    from{ transform:scale(1); opacity:.8; }
-    to  { transform:scale(9); opacity:0; }
-  }
-
   /* ======================= LIQUID POOL CANVAS ======================= */
   #liq-svg{
     position:absolute;
@@ -2520,11 +2446,6 @@
 <div class="bg-grid-reflect" id="bg-grid-reflect" aria-hidden="true"></div>
 <div class="glow-ambient"    id="glow-ambient"    aria-hidden="true"></div>
 <div class="glow-core"       id="glow-core"       aria-hidden="true"></div>
-
-<!-- liquid cursor (3 layers) -->
-<div id="cursor-trail" aria-hidden="true"></div>
-<div id="cursor-blob"  aria-hidden="true"></div>
-<div id="cursor-dot"   aria-hidden="true"></div>
 
 <!-- ============ NAV ============ -->
 <nav>
@@ -3771,93 +3692,6 @@
       requestAnimationFrame(tick);
     }
 
-    requestAnimationFrame(tick);
-  }());
-
-  // ── liquid cursor ────────────────────────────────────────────────────────
-  (function(){
-    const mq = window.matchMedia('(hover:hover) and (pointer:fine)');
-    if (!mq.matches) return;
-
-    const trail = document.getElementById('cursor-trail');
-    const blob  = document.getElementById('cursor-blob');
-    const dot   = document.getElementById('cursor-dot');
-    if (!trail || !blob || !dot) return;
-
-    const W = window.innerWidth, H = window.innerHeight;
-    let mx = W/2, my = H/2;
-    let tx = mx, ty = my;
-    let bx = mx, by = my;
-    let dx = mx, dy = my;
-    let lx = mx, ly = my;   // last frame pos (velocity)
-    let morphT = 0;
-    let shown = false;
-
-    const T_L = 0.055, B_L = 0.12, D_L = 0.50;
-
-    window.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      if (!shown) {
-        shown = true;
-        trail.style.opacity = '1';
-        blob.style.opacity  = '1';
-        dot.style.opacity   = '1';
-      }
-    }, { passive:true });
-
-    // hover detection
-    document.querySelectorAll('a,button,[role=button],input,textarea,select,label,[tabindex="0"]')
-      .forEach(el => {
-        el.addEventListener('mouseenter', () => { blob.classList.add('is-hovering'); dot.classList.add('is-hovering'); });
-        el.addEventListener('mouseleave', () => { blob.classList.remove('is-hovering'); dot.classList.remove('is-hovering'); });
-      });
-
-    // click ripple
-    window.addEventListener('mousedown', e => {
-      blob.classList.add('is-clicking');
-      const r = document.createElement('div');
-      r.style.cssText = `position:fixed;pointer-events:none;z-index:9995;
-        width:16px;height:16px;border-radius:50%;
-        top:${e.clientY-8}px;left:${e.clientX-8}px;
-        border:1.5px solid rgba(61,155,255,0.85);
-        animation:cursor-ripple .55s cubic-bezier(0,.85,.3,1) forwards;`;
-      document.body.appendChild(r);
-      setTimeout(() => r.remove(), 600);
-    });
-    window.addEventListener('mouseup', () => blob.classList.remove('is-clicking'));
-
-    function tick(){
-      morphT += 0.013;
-
-      // organic border-radius oscillation
-      const r1 = 44 + Math.sin(morphT * 1.30) * 18;
-      const r2 = 44 + Math.cos(morphT * 0.87) * 14;
-      const r3 = 44 + Math.sin(morphT * 1.57) * 20;
-      const r4 = 44 + Math.cos(morphT * 1.05) * 12;
-
-      // velocity squish
-      const vx   = mx - lx;
-      const vy   = my - ly;
-      const spd  = Math.sqrt(vx*vx + vy*vy);
-      const ang  = Math.atan2(vy, vx) * 180 / Math.PI;
-      const sq   = Math.min(spd * 0.065, 0.58);
-      lx = mx; ly = my;
-
-      // lerp
-      tx += (mx - tx) * T_L;
-      ty += (my - ty) * T_L;
-      bx += (mx - bx) * B_L;
-      by += (my - by) * B_L;
-      dx += (mx - dx) * D_L;
-      dy += (my - dy) * D_L;
-
-      trail.style.transform = `translate3d(${tx}px,${ty}px,0)`;
-      blob.style.transform  = `translate3d(${bx}px,${by}px,0) rotate(${ang}deg) scale(${1+sq},${1-sq*0.4})`;
-      blob.style.borderRadius = `${r1}% ${100-r1}% ${r3}% ${100-r3}% / ${r2}% ${r2}% ${100-r4}% ${100-r4}%`;
-      dot.style.transform   = `translate3d(${dx}px,${dy}px,0)`;
-
-      requestAnimationFrame(tick);
-    }
     requestAnimationFrame(tick);
   }());
 
